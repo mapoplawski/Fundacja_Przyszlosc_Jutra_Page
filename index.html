@@ -1,6 +1,339 @@
-<form method="POST" action="https://formsubmit.co/ma.poplawski95@gmail.com" enctype="multipart/form-data">
-    <input type="email" name="email" placeholder="Your email">
-    <textarea name="message" placeholder="Details of your problem"></textarea>
-    <input type="file" name="attachment" accept="image/png, image/jpeg">
-    <button type="submit">Send Test</button>
-</form>
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fundacja Przeszłość Jutra — Przeszłość, która kształtuje przyszłość</title>
+  <meta name="description" content="Chronimy dziedzictwo, dokumentujemy historię i przywracamy pamięć o ludziach i wydarzeniach." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header" id="top">
+    <div class="container nav-wrapper">
+      <a href="index.html" class="brand" aria-label="Fundacja Przeszłość Jutra — Strona główna">
+        <span class="brand-monogram" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path d="M5 20h14M7 20V8l5-4 5 4v12M10 12h4M12 12v8"/>
+          </svg>
+        </span>
+        <span class="brand-text">
+          <span class="brand-title">PRZESZŁOŚĆ JUTRA</span>
+          <span class="brand-subtitle">FUNDACJA</span>
+        </span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Otwórz menu nawigacji" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav" id="mainNav" aria-label="Główna nawigacja">
+        <ul>
+          <li><a href="o-fundacji.html">O fundacji</a></li>
+          <li><a href="projekty.html">Projekty</a></li>
+          <li><a href="aktualnosci.html">Aktualności</a></li>
+          <li><a href="wspolpraca.html">Współpraca</a></li>
+          <li><a href="wesprzyj-nas.html" class="nav-highlight">Wesprzyj nas</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1. Pierwszy ekran: nagłówek z tłem wideo/animowanym kadrem archiwalnym -->
+    <section class="hero hero-home">
+      <div class="hero-media-bg" aria-hidden="true">
+        <div class="hero-ambient-canvas"></div>
+        <div class="hero-archival-grid"></div>
+      </div>
+      <div class="container hero-inner">
+        <p class="eyebrow eyebrow-light">PAMIĘĆ · DZIEDZICTWO · PRZYSZŁOŚĆ</p>
+        <h1>Przeszłość, która <em>kształtuje przyszłość.</em></h1>
+        <p class="hero-lead">
+          Chronimy dziedzictwo, dokumentujemy historię i przywracamy pamięć o ludziach i wydarzeniach.
+        </p>
+        <div class="hero-actions">
+          <a href="projekty.html" class="btn btn-burgundy">Poznaj nasze projekty ↗</a>
+          <a href="o-fundacji.html" class="btn btn-outline-light">O fundacji</a>
+        </div>
+        <div class="hero-media-caption">
+          <span>01 — KADR ARCHIWALNY / FILM W TLE</span>
+          <span>FUNDACJA PRZESZŁOŚĆ JUTRA</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Drugi ekran: nasza misja -->
+    <section class="section section-cream" id="misja">
+      <div class="container">
+        <div class="mission-split">
+          <div>
+            <p class="eyebrow">01 / NASZA MISJA</p>
+            <h2>Zachować. Rozumieć. <em>Uczestniczyć.</em></h2>
+          </div>
+          <div class="mission-copy">
+            <p>
+              Fundacja Przeszłość Jutra działa na rzecz ochrony i zachowania dziedzictwa historycznego i kulturowego.
+            </p>
+            <p>
+              Realizujemy projekty dokumentacyjne, edukacyjne i wydawnicze, przywracając pamięć o ludziach i wydarzeniach oraz pokazując ich znaczenie dla współczesności.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Trzeci ekran: co robimy -->
+    <section class="section section-sand" id="co-robimy">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">02 / CO ROBIMY</p>
+          <h2>Trzy obszary naszej działalności</h2>
+        </div>
+        <div class="grid-3">
+          <article class="pillar-card">
+            <span class="pillar-num">01</span>
+            <h3>Historia i pamięć</h3>
+            <p>Odkrywamy i upowszechniamy historię ludzi oraz wydarzeń.</p>
+          </article>
+          <article class="pillar-card">
+            <span class="pillar-num">02</span>
+            <h3>Dziedzictwo i dokumentacja</h3>
+            <p>Dokumentujemy przeszłość i działamy na rzecz jej zachowania.</p>
+          </article>
+          <article class="pillar-card">
+            <span class="pillar-num">03</span>
+            <h3>Kultura i edukacja</h3>
+            <p>Wspieramy publikacje i inicjatywy popularyzujące wiedzę.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Ekran czwarty: nasze działania -->
+    <section class="section section-cream" id="nasze-dzialania">
+      <div class="container">
+        <div class="section-head-row">
+          <div>
+            <p class="eyebrow">03 / NASZE DZIAŁANIA</p>
+            <h2>Inicjatywy fundacji</h2>
+          </div>
+          <p class="section-note">Trzy inicjatywy, które pokazują, jak realizujemy naszą misję.</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="project-card">
+            <div class="card-visual visual-book">
+              <span class="visual-label">PUBLIKACJA · PREMIERA</span>
+              <div class="visual-art-frame">
+                <span>TAJEMNICA „RYSIA”</span>
+                <small>ODDZIAŁ 993/W</small>
+              </div>
+            </div>
+            <div class="card-body">
+              <p class="card-tag">HISTORIA · PUBLIKACJE</p>
+              <h3>Tajemnica „Rysia” z Oddziału 993/W</h3>
+              <p>
+                Książka Wojciecha Königsberga i prof. Remigiusza Wiśniewskiego, premiera w Muzeum Powstania Warszawskiego i spotkania przywracające pamięć o Janie Nowickim.
+              </p>
+              <a href="projekty.html#projekt-rys" class="text-link">POZNAJ PROJEKT ↗</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="card-visual visual-uprising">
+              <span class="visual-label">DOKUMENTACJA · SZLAK</span>
+              <div class="visual-art-frame">
+                <span>1944</span>
+                <small>SZLAKIEM WALK I PAMIĘCI</small>
+              </div>
+            </div>
+            <div class="card-body">
+              <p class="card-tag">POWSTANIE WARSZAWSKIE</p>
+              <h3>Powstanie Warszawskie</h3>
+              <p>
+                Dokumentowanie szlaku bojowego, upowszechnianie wiedzy i przywracanie pamięci o uczestnikach Powstania.
+              </p>
+              <a href="projekty.html#projekt-powstanie" class="text-link">POZNAJ PROJEKT ↗</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="card-visual visual-memorial">
+              <span class="visual-label">POWĄZKI WOJSKOWE</span>
+              <div class="visual-art-frame">
+                <span>„RYŚ” &amp; „HALINKA”</span>
+                <small>PAMIĘĆ TRWA</small>
+              </div>
+            </div>
+            <div class="card-body">
+              <p class="card-tag">MIEJSCA PAMIĘCI</p>
+              <h3>Symboliczne groby powstańców</h3>
+              <p>
+                Inicjatywa upamiętnienia Jana Nowickiego „Rysia” i łączniczki „Halinki”, których miejsca pochówku pozostają nieznane.
+              </p>
+              <a href="projekty.html#projekt-groby" class="text-link">POZNAJ PROJEKT ↗</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Piąty ekran: współpraca -->
+    <section class="section section-sand" id="wspolpraca-home">
+      <div class="container">
+        <div class="coop-split">
+          <div>
+            <p class="eyebrow">04 / WSPÓŁPRACA</p>
+            <h2>Wspólnie dla dziedzictwa</h2>
+            <p>
+              Realizacja wartościowych inicjatyw wymaga współpracy. Zapraszamy instytucje, organizacje i partnerów do wspólnych projektów.
+            </p>
+            <a href="wspolpraca.html" class="btn btn-outline-dark">Poznaj możliwości współpracy ↗</a>
+          </div>
+          <div class="partner-grid-mini">
+            <div class="partner-box">
+              <span class="partner-badge">PARTNERZY</span>
+              <strong>Muzea i archiwa</strong>
+            </div>
+            <div class="partner-box">
+              <span class="partner-badge">KULTURA</span>
+              <strong>Instytucje kultury</strong>
+            </div>
+            <div class="partner-box">
+              <span class="partner-badge">PROJEKTY</span>
+              <strong>Partnerzy projektów</strong>
+            </div>
+            <div class="partner-box">
+              <span class="partner-badge">MECENAT</span>
+              <strong>Sponsorzy</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Szósty ekran: aktualności -->
+    <section class="section section-cream" id="aktualnosci-home">
+      <div class="container">
+        <div class="section-head-row">
+          <div>
+            <p class="eyebrow">05 / AKTUALNOŚCI</p>
+            <h2>Najnowsze działania fundacji</h2>
+          </div>
+          <a href="aktualnosci.html" class="text-link">Wszystkie aktualności ↗</a>
+        </div>
+
+        <div class="grid-3">
+          <article class="news-card">
+            <div class="news-meta">
+              <span class="pill">WYDARZENIA</span>
+              <time datetime="2026-09-25">25 września 2026</time>
+            </div>
+            <h3>Upamiętniliśmy por. Jana Nowickiego „Rysia” i łączniczkę „Halinkę”</h3>
+            <p>
+              Uroczystość na Powązkach Wojskowych przywracająca pamięć o uczestnikach Powstania Warszawskiego.
+            </p>
+            <a href="aktualnosci.html#art-powazki" class="text-link">Czytaj więcej →</a>
+          </article>
+
+          <article class="news-card">
+            <div class="news-meta">
+              <span class="pill">PROJEKTY</span>
+              <time datetime="2026-05-12">12 maja 2026</time>
+            </div>
+            <h3>Nowe projekty i inicjatywy</h3>
+            <p>
+              Informacja o kolejnych etapach prac dokumentacyjnych oraz badaniach nad losami żołnierzy Armii Krajowej.
+            </p>
+            <a href="aktualnosci.html#art-historia" class="text-link">Czytaj więcej →</a>
+          </article>
+
+          <article class="news-card">
+            <div class="news-meta">
+              <span class="pill">PUBLIKACJE</span>
+              <time datetime="2026-04-10">10 kwietnia 2026</time>
+            </div>
+            <h3>Spotkania i publikacje</h3>
+            <p>
+              Zapowiedź oraz podsumowanie spotkań autorskich wokół książki „Tajemnica «Rysia» z Oddziału 993/W”.
+            </p>
+            <a href="aktualnosci.html#art-ksiazka" class="text-link">Czytaj więcej →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Siódmy ekran: wesprzyj działania fundacji -->
+    <section class="cta-banner cta-dark">
+      <div class="container cta-center">
+        <p class="eyebrow eyebrow-light">DOŁĄCZ DO NAS</p>
+        <h2>Pomóż zachować to, co ważne.</h2>
+        <p>
+          Wspieraj inicjatywy na rzecz historii, kultury i dziedzictwa albo podejmij z nami współpracę.
+        </p>
+        <div class="hero-actions">
+          <a href="wesprzyj-nas.html" class="btn btn-burgundy">WESPRZYJ FUNDACJĘ</a>
+          <a href="wspolpraca.html" class="btn btn-outline-light">NAWIĄŻ WSPÓŁPRACĘ</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand brand-light">
+            <span class="brand-monogram" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <path d="M5 20h14M7 20V8l5-4 5 4v12M10 12h4M12 12v8"/>
+              </svg>
+            </span>
+            <span class="brand-text">
+              <span class="brand-title">FUNDACJA PRZESZŁOŚĆ JUTRA</span>
+              <span class="brand-subtitle">ZACHOWAĆ · ROZUMIEĆ · UCZESTNICZYĆ</span>
+            </span>
+          </a>
+          <p class="footer-desc">
+            Zachowujemy pamięć, chronimy dziedzictwo i upowszechniamy wiedzę o przeszłości.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>NAWIGACJA</h4>
+          <ul>
+            <li><a href="o-fundacji.html">O fundacji</a></li>
+            <li><a href="projekty.html">Projekty</a></li>
+            <li><a href="aktualnosci.html">Aktualności</a></li>
+            <li><a href="wspolpraca.html">Współpraca</a></li>
+            <li><a href="wesprzyj-nas.html">Wesprzyj nas</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>KONTAKT I DANE REJESTROWE</h4>
+          <ul class="footer-contact-list">
+            <li><a href="mailto:fundacja@przeszloscjutra.pl">fundacja@przeszloscjutra.pl</a></li>
+            <li>ul. 28 Czerwca 1956 r. 251/14, 61-485 Poznań</li>
+            <li class="footer-ids">KRS: 0001264834 · NIP: 7831962314 · REGON: 545646467</li>
+          </ul>
+          <h4 class="footer-subhead">MEDIA SPOŁECZNOŚCIOWE</h4>
+          <div class="social-links">
+            <a href="https://www.instagram.com/igorczapczyk?srtk=MXB1MWFxejh5ZDUybQ==" target="_blank" rel="noopener noreferrer" aria-label="Instagram Fundacji">Instagram ↗</a>
+            <a href="https://www.facebook.com/profile.php?id=100014543077034" target="_blank" rel="noopener noreferrer" aria-label="Facebook Fundacji">Facebook ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <a href="polityka-prywatnosci.html">Polityka prywatności</a>
+        <span>© <span id="year">2026</span> Fundacja Przeszłość Jutra. Wszelkie prawa zastrzeżone.</span>
+      </div>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>

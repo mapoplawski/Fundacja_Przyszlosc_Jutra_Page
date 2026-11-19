@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projekty — Fundacja Przeszłość Jutra</title>
+  <meta name="description" content="Projekty historyczne, dokumentacyjne i upamiętniające realizowane przez Fundację Przeszłość Jutra." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header" id="top">
+    <div class="container nav-wrapper">
+      <a href="index.html" class="brand" aria-label="Fundacja Przeszłość Jutra — Strona główna">
+        <span class="brand-monogram" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path d="M5 20h14M7 20V8l5-4 5 4v12M10 12h4M12 12v8"/>
+          </svg>
+        </span>
+        <span class="brand-text">
+          <span class="brand-title">PRZESZŁOŚĆ JUTRA</span>
+          <span class="brand-subtitle">FUNDACJA</span>
+        </span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Otwórz menu nawigacji" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav" id="mainNav" aria-label="Główna nawigacja">
+        <ul>
+          <li><a href="o-fundacji.html">O fundacji</a></li>
+          <li><a href="projekty.html" class="active">Projekty</a></li>
+          <li><a href="aktualnosci.html">Aktualności</a></li>
+          <li><a href="wspolpraca.html">Współpraca</a></li>
+          <li><a href="wesprzyj-nas.html" class="nav-highlight">Wesprzyj nas</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1. Nagłówek -->
+    <section class="page-hero-dark">
+      <div class="container hero-projects-grid">
+        <div>
+          <p class="eyebrow eyebrow-light">FUNDACJA PRZESZŁOŚĆ JUTRA</p>
+          <h1>Projekty, które przywracają pamięć.</h1>
+          <p class="hero-lead">
+            Dokumentujemy historię, upowszechniamy wiedzę i tworzymy inicjatywy, które pomagają zachować dziedzictwo dla kolejnych pokoleń.
+          </p>
+        </div>
+        <div class="vertical-tagline" aria-hidden="true">PAMIĘĆ · DZIEDZICTWO · DZIAŁANIE</div>
+      </div>
+    </section>
+
+    <!-- 2. Główna sekcja z projektami -->
+    <section class="section section-cream" id="katalog-projektow">
+      <div class="container">
+        <div class="section-head-row">
+          <div>
+            <p class="eyebrow">NASZE DZIAŁANIA</p>
+            <h2>Poznaj nasze projekty</h2>
+          </div>
+          <p class="section-note">Każdy projekt to osobna historia, ludzie i działania.</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="project-card" id="projekt-rys">
+            <div class="card-visual visual-book">
+              <span class="visual-label">01 / WSPARCIE TWÓRCÓW</span>
+              <div class="visual-art-frame">
+                <span>TAJEMNICA „RYSIA”</span>
+                <small>PUBLIKACJA I SPOTKANIA</small>
+              </div>
+            </div>
+            <div class="card-body">
+              <p class="card-tag">WSPARCIE TWÓRCÓW · PUBLIKACJE</p>
+              <h3>Tajemnica „Rysia” z Oddziału 993/W</h3>
+              <p>
+                Książka Wojciecha Königsberga i prof. Remigiusza Wiśniewskiego oraz spotkania przywracające pamięć o Janie Nowickim „Rysiu”.
+              </p>
+              <button type="button" class="text-link btn-as-link" data-project-modal="rys">Poznaj projekt ↗</button>
+            </div>
+          </article>
+
+          <article class="project-card" id="projekt-powstanie">
+            <div class="card-visual visual-uprising">
+              <span class="visual-label">02 / DOKUMENTACJA HISTORII</span>
+              <div class="visual-art-frame">
+                <span>1944</span>
+                <small>SZLAK BOJOWY I PAMIĘĆ</small>
+              </div>
+            </div>
+            <div class="card-body">
+              <p class="card-tag">DOKUMENTACJA HISTORII · POWSTANIE WARSZAWSKIE</p>
+              <h3>Śladami walk i pamięci</h3>
+              <p>
+                Dokumentowanie szlaku bojowego, udział w obchodach rocznicowych i popularyzacja historii Powstania Warszawskiego.
+              </p>
+              <button type="button" class="text-link btn-as-link" data-project-modal="powstanie">Poznaj projekt ↗</button>
+            </div>
+          </article>
+
+          <article class="project-card" id="projekt-groby">
+            <div class="card-visual visual-memorial">
+              <span class="visual-label">03 / UPAMIĘTNIENIE LUDZI I WYDARZEŃ</span>
+              <div class="visual-art-frame">
+                <span>POWĄZKI WOJSKOWE</span>
+                <small>SYMBOLICZNE GROBY</small>
+              </div>
+            </div>
+            <div class="card-body">
+              <p class="card-tag">UPAMIĘTNIENIE LUDZI I WYDARZEŃ</p>
+              <h3>Symboliczne groby powstańców</h3>
+              <p>
+                Inicjatywa upamiętnienia Jana Nowickiego „Rysia” i łączniczki „Halinki”, których miejsca pochówku pozostają nieznane.
+              </p>
+              <button type="button" class="text-link btn-as-link" data-project-modal="groby">Poznaj projekt ↗</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Projekt wyróżniony -->
+    <section class="section section-sand" id="projekt-wyrozniony">
+      <div class="container">
+        <div class="featured-project-box">
+          <div class="featured-project-media">
+            <div class="featured-portrait-badge">
+              <span>POR. JAN NOWICKI „RYŚ”</span>
+              <small>ARMIA KRAJOWA · ODDZIAŁ 993/W</small>
+            </div>
+          </div>
+          <div class="featured-project-content">
+            <p class="eyebrow">PROJEKT WYRÓŻNIONY</p>
+            <h2>Przywracamy pamięć o bohaterach</h2>
+            <p>
+              Historia por. Jana Nowickiego „Rysia”, żołnierza Armii Krajowej i uczestnika Powstania Warszawskiego, którego tożsamość przez osiem dekad pozostawała ukryta w szyfrogramach kontrwywiadu AK.
+            </p>
+            <p>
+              Odkrycie jego tożsamości przywróciło pamięć o jego losach i pozwoliło ocalić od zapomnienia kolejny fragment historii.
+            </p>
+            <button type="button" class="text-link btn-as-link" data-project-modal="rys">Poznaj historię ↗</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Zaproszenie do współpracy -->
+    <section class="section section-cream">
+      <div class="container">
+        <div class="coop-box-bordered">
+          <div>
+            <h2>Chcesz współtworzyć nasze działania?</h2>
+            <p>Zapraszamy do współpracy przy projektach historycznych, edukacyjnych i dokumentacyjnych.</p>
+          </div>
+          <a href="kontakt.html#formularz-kontaktowy" class="btn btn-outline-dark">Napisz do fundacji ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal szczegółów projektu -->
+    <div class="modal-backdrop" id="projectModal" hidden role="dialog" aria-modal="true" aria-labelledby="projectModalTitle">
+      <div class="modal-card">
+        <button type="button" class="modal-close" id="closeProjectModal" aria-label="Zamknij okno">✕</button>
+        <p class="eyebrow" id="projectModalCat"></p>
+        <h2 id="projectModalTitle"></h2>
+        <div id="projectModalBody"></div>
+        <div class="modal-footer">
+          <a href="wspolpraca.html#formularz-wspolpracy" class="btn btn-burgundy">Współtwórz ten projekt ↗</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand brand-light">
+            <span class="brand-monogram" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <path d="M5 20h14M7 20V8l5-4 5 4v12M10 12h4M12 12v8"/>
+              </svg>
+            </span>
+            <span class="brand-text">
+              <span class="brand-title">FUNDACJA PRZESZŁOŚĆ JUTRA</span>
+              <span class="brand-subtitle">ZACHOWAĆ · ROZUMIEĆ · UCZESTNICZYĆ</span>
+            </span>
+          </a>
+          <p class="footer-desc">
+            Zachowujemy pamięć, chronimy dziedzictwo i upowszechniamy wiedzę o przeszłości.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>NAWIGACJA</h4>
+          <ul>
+            <li><a href="o-fundacji.html">O fundacji</a></li>
+            <li><a href="projekty.html">Projekty</a></li>
+            <li><a href="aktualnosci.html">Aktualności</a></li>
+            <li><a href="wspolpraca.html">Współpraca</a></li>
+            <li><a href="wesprzyj-nas.html">Wesprzyj nas</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>KONTAKT I DANE REJESTROWE</h4>
+          <ul class="footer-contact-list">
+            <li><a href="mailto:fundacja@przeszloscjutra.pl">fundacja@przeszloscjutra.pl</a></li>
+            <li>ul. 28 Czerwca 1956 r. 251/14, 61-485 Poznań</li>
+            <li class="footer-ids">KRS: 0001264834 · NIP: 7831962314 · REGON: 545646467</li>
+          </ul>
+          <h4 class="footer-subhead">MEDIA SPOŁECZNOŚCIOWE</h4>
+          <div class="social-links">
+            <a href="https://www.instagram.com/igorczapczyk?srtk=MXB1MWFxejh5ZDUybQ==" target="_blank" rel="noopener noreferrer" aria-label="Instagram Fundacji">Instagram ↗</a>
+            <a href="https://www.facebook.com/profile.php?id=100014543077034" target="_blank" rel="noopener noreferrer" aria-label="Facebook Fundacji">Facebook ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <a href="polityka-prywatnosci.html">Polityka prywatności</a>
+        <span>© <span id="year">2026</span> Fundacja Przeszłość Jutra. Wszelkie prawa zastrzeżone.</span>
+      </div>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>

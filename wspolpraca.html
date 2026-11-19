@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Współpraca — Fundacja Przeszłość Jutra</title>
+  <meta name="description" content="Współpracuj z Fundacją Przeszłość Jutra przy projektach historycznych, kulturalnych i edukacyjnych." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header" id="top">
+    <div class="container nav-wrapper">
+      <a href="index.html" class="brand" aria-label="Fundacja Przeszłość Jutra — Strona główna">
+        <span class="brand-monogram" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path d="M5 20h14M7 20V8l5-4 5 4v12M10 12h4M12 12v8"/>
+          </svg>
+        </span>
+        <span class="brand-text">
+          <span class="brand-title">PRZESZŁOŚĆ JUTRA</span>
+          <span class="brand-subtitle">FUNDACJA</span>
+        </span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Otwórz menu nawigacji" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav" id="mainNav" aria-label="Główna nawigacja">
+        <ul>
+          <li><a href="o-fundacji.html">O fundacji</a></li>
+          <li><a href="projekty.html">Projekty</a></li>
+          <li><a href="aktualnosci.html">Aktualności</a></li>
+          <li><a href="wspolpraca.html" class="active">Współpraca</a></li>
+          <li><a href="wesprzyj-nas.html" class="nav-highlight">Wesprzyj nas</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1. Główna sekcja otwierająca -->
+    <section class="page-hero-dark">
+      <div class="container">
+        <p class="eyebrow eyebrow-light">PARTNERSTWO · WSPÓLNE INICJATYWY</p>
+        <h1>Współpracujmy na rzecz dziedzictwa</h1>
+        <p class="hero-lead">
+          Wierzymy, że skuteczna ochrona dziedzictwa wymaga współpracy, wymiany wiedzy i wspólnego działania. Zapraszamy instytucje, organizacje, przedsiębiorstwa oraz osoby prywatne do realizacji inicjatyw historycznych, kulturalnych i edukacyjnych.
+        </p>
+        <div class="hero-actions">
+          <a href="#formularz-wspolpracy" class="btn btn-burgundy">Nawiąż współpracę ↓</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Z kim chcemy współpracować? (6 kart w 2 rzędach po 3) -->
+    <section class="section section-cream" id="partnerzy-grupy">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">OTWIERAMY SIĘ NA WSPÓŁPRACĘ</p>
+          <h2>Z kim chcemy współpracować?</h2>
+          <p class="muted-text">Zapraszamy do wspólnych działań wszystkich, którym bliska jest ochrona historii, kultury i dziedzictwa.</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="coop-group-card">
+            <div class="icon-circle">🏛️</div>
+            <h3>Instytucje publiczne i samorządy</h3>
+            <p>Wspólne inicjatywy na rzecz ochrony dziedzictwa, upamiętniania ważnych wydarzeń oraz rozwoju projektów historycznych i edukacyjnych.</p>
+            <a href="#formularz-wspolpracy" class="text-link">Poznaj możliwości →</a>
+          </article>
+
+          <article class="coop-group-card">
+            <div class="icon-circle">📜</div>
+            <h3>Muzea, archiwa i instytucje kultury</h3>
+            <p>Współpraca badawcza, dokumentacyjna, wystawiennicza i popularyzatorska, służąca upowszechnianiu wiedzy o historii i dziedzictwie.</p>
+            <a href="#formularz-wspolpracy" class="text-link">Poznaj możliwości →</a>
+          </article>
+
+          <article class="coop-group-card">
+            <div class="icon-circle">🎓</div>
+            <h3>Uczelnie i środowiska naukowe</h3>
+            <p>Realizacja projektów badawczych, edukacyjnych i dokumentacyjnych, a także wspieranie popularyzacji wyników badań.</p>
+            <a href="#formularz-wspolpracy" class="text-link">Poznaj możliwości →</a>
+          </article>
+
+          <article class="coop-group-card">
+            <div class="icon-circle">🤝</div>
+            <h3>Organizacje pozarządowe</h3>
+            <p>Wspólne projekty społeczne, historyczne i kulturalne, wymiana doświadczeń oraz łączenie zasobów i kompetencji.</p>
+            <a href="#formularz-wspolpracy" class="text-link">Poznaj możliwości →</a>
+          </article>
+
+          <article class="coop-group-card">
+            <div class="icon-circle">💼</div>
+            <h3>Firmy i sponsorzy</h3>
+            <p>Wsparcie finansowe lub rzeczowe projektów fundacji, partnerstwa przy wydarzeniach oraz zaangażowanie w inicjatywy z zakresu społecznej odpowiedzialności biznesu.</p>
+            <a href="#formularz-wspolpracy" class="text-link">Poznaj możliwości →</a>
+          </article>
+
+          <article class="coop-group-card">
+            <div class="icon-circle">✒️</div>
+            <h3>Badacze, twórcy i osoby prywatne</h3>
+            <p>Współpraca przy dokumentowaniu historii, przygotowywaniu publikacji, gromadzeniu materiałów oraz realizacji inicjatyw edukacyjnych.</p>
+            <a href="#formularz-wspolpracy" class="text-link">Poznaj możliwości →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Jak możemy współpracować? -->
+    <section class="section section-sand" id="formy-wspolpracy">
+      <div class="container">
+        <div class="split-2 align-start">
+          <div>
+            <p class="eyebrow">MOŻLIWOŚCI DZIAŁANIA</p>
+            <h2>Jak możemy współpracować?</h2>
+            <p class="muted-text">
+              Poniższe formy współpracy stanowią punkt wyjścia do rozmowy — zakres każdego przedsięwzięcia ustalamy indywidualnie.
+            </p>
+            <div class="photo-placeholder-card tall-card">
+              <div class="photo-overlay-bottom">
+                <em>Wspólne działania dla dziedzictwa.</em>
+              </div>
+            </div>
+          </div>
+
+          <div class="coop-forms-list">
+            <div class="coop-form-item">
+              <span class="bullet-dot">01</span>
+              <div>
+                <h3>Realizacja wspólnych projektów</h3>
+                <p>Wspólnie przygotowujemy inicjatywy historyczne, kulturalne i edukacyjne, łącząc wiedzę, doświadczenie i możliwości partnerów.</p>
+              </div>
+            </div>
+            <div class="coop-form-item">
+              <span class="bullet-dot">02</span>
+              <div>
+                <h3>Partnerstwa instytucjonalne</h3>
+                <p>Budujemy relacje z instytucjami publicznymi, muzeami, archiwami, uczelniami i organizacjami, aby rozwijać długofalowe przedsięwzięcia.</p>
+              </div>
+            </div>
+            <div class="coop-form-item">
+              <span class="bullet-dot">03</span>
+              <div>
+                <h3>Wsparcie finansowe i rzeczowe</h3>
+                <p>Zapraszamy do wspierania projektów poprzez finansowanie, udostępnianie zasobów, zapewnianie zaplecza organizacyjnego lub pomoc w realizacji wydarzeń.</p>
+              </div>
+            </div>
+            <div class="coop-form-item">
+              <span class="bullet-dot">04</span>
+              <div>
+                <h3>Współpraca naukowa i wydawnicza</h3>
+                <p>Podejmujemy działania związane z badaniem, dokumentowaniem i upowszechnianiem historii, w tym przygotowywaniem publikacji oraz materiałów edukacyjnych.</p>
+              </div>
+            </div>
+            <div class="coop-form-item">
+              <span class="bullet-dot">05</span>
+              <div>
+                <h3>Organizacja wydarzeń</h3>
+                <p>Wspólnie przygotowujemy spotkania, konferencje, uroczystości upamiętniające, prezentacje publikacji i inne inicjatywy popularyzujące historię.</p>
+              </div>
+            </div>
+            <div class="coop-form-item">
+              <span class="bullet-dot">06</span>
+              <div>
+                <h3>Promocja i komunikacja</h3>
+                <p>Wspieramy upowszechnianie wiedzy o realizowanych projektach poprzez materiały informacyjne, publikacje internetowe i działania promocyjne.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Współpraca w praktyce. Nasze projekty -->
+    <section class="section section-cream">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">NASZE DZIAŁANIA</p>
+          <h2>Współpraca w praktyce. Nasze projekty</h2>
+        </div>
+
+        <div class="grid-3">
+          <article class="project-card">
+            <div class="card-visual visual-book">
+              <span class="visual-label">PROJEKT HISTORYCZNY</span>
+              <div class="visual-art-frame"><span>„Ryś”</span></div>
+            </div>
+            <div class="card-body">
+              <h3>Tajemnica „Rysia” z Oddziału 993/W</h3>
+              <p>
+                Działania związane z przywracaniem pamięci o por. Janie Nowickim „Rysiu”, popularyzacją badań historycznych oraz upowszechnianiem publikacji Wojciecha Königsberga i prof. Remigiusza Wiśniewskiego.
+              </p>
+              <a href="projekty.html#projekt-rys" class="text-link">Poznaj projekt →</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="card-visual visual-uprising">
+              <span class="visual-label">PAMIĘĆ I EDUKACJA</span>
+              <div class="visual-art-frame"><span>Śladami historii</span></div>
+            </div>
+            <div class="card-body">
+              <h3>Śladami walk i pamięci</h3>
+              <p>
+                Dokumentowanie losów uczestników Powstania Warszawskiego, popularyzowanie wiedzy historycznej i podejmowanie inicjatyw upamiętniających.
+              </p>
+              <a href="projekty.html#projekt-powstanie" class="text-link">Poznaj projekt →</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="card-visual visual-memorial">
+              <span class="visual-label">OCHRONA DZIEDZICTWA</span>
+              <div class="visual-art-frame"><span>Pamięć trwa</span></div>
+            </div>
+            <div class="card-body">
+              <h3>Symboliczne groby powstańców</h3>
+              <p>
+                Inicjatywa przywracania pamięci o żołnierzach i łączniczkach, których miejsca pochówku pozostają nieznane.
+              </p>
+              <a href="projekty.html#projekt-groby" class="text-link">Poznaj projekt →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Partnerzy i instytucje -->
+    <section class="section section-sand">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">BUDUJMY TRWAŁE PARTNERSTWA</p>
+          <h2>Partnerzy i instytucje</h2>
+          <p class="muted-text">Przestrzeń na prezentację instytucji kultury, muzeów, patronów i partnerów wspierających projekty fundacji.</p>
+        </div>
+        <div class="logos-grid">
+          <div class="logo-slot"><span>INSTYTUCJA KULTURY</span><small>Partner merytoryczny</small></div>
+          <div class="logo-slot"><span>MUZEUM / ARCHIWUM</span><small>Współpraca badawcza</small></div>
+          <div class="logo-slot"><span>ORGANIZACJA SPOŁECZNA</span><small>Partner projektu</small></div>
+          <div class="logo-slot"><span>MECENAS / SPONSOR</span><small>Wsparcie inicjatyw</small></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Dlaczego warto współpracować z fundacją? -->
+    <section class="section section-cream">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">WARTOŚĆ WSPÓLNYCH DZIAŁAŃ</p>
+          <h2>Dlaczego warto współpracować z fundacją?</h2>
+        </div>
+        <div class="grid-4">
+          <article class="value-card">
+            <span class="value-icon">🛡️</span>
+            <h3>Ochrona dziedzictwa</h3>
+            <p>Wspólnie przyczyniamy się do zachowania pamięci o ludziach, wydarzeniach i dorobku minionych pokoleń.</p>
+          </article>
+          <article class="value-card">
+            <span class="value-icon">📖</span>
+            <h3>Upowszechnianie wiedzy</h3>
+            <p>Pomagamy docierać z treściami historycznymi i kulturowymi do szerszego grona odbiorców.</p>
+          </article>
+          <article class="value-card">
+            <span class="value-icon">🔗</span>
+            <h3>Łączenie kompetencji</h3>
+            <p>Łączymy wiedzę badaczy, możliwości instytucji, zaangażowanie organizacji i potencjał twórców.</p>
+          </article>
+          <article class="value-card">
+            <span class="value-icon">⏳</span>
+            <h3>Długofalowe działania</h3>
+            <p>Stawiamy na inicjatywy, które mogą przynosić trwałe efekty w obszarze edukacji, dokumentacji i ochrony dziedzictwa.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Formularz kontaktowy. Nawiąż współpracę -->
+    <section class="section section-sand" id="formularz-wspolpracy">
+      <div class="container">
+        <div class="form-layout">
+          <div>
+            <p class="eyebrow">PIERWSZY KROK</p>
+            <h2>Porozmawiajmy o współpracy</h2>
+            <p>
+              Jeżeli reprezentujesz instytucję, organizację, firmę lub działasz indywidualnie i chcesz zaangażować się w nasze inicjatywy, skontaktuj się z nami. Chętnie poznamy Twój pomysł i możliwości wspólnego działania.
+            </p>
+            <div class="contact-box-mini">
+              <strong>Fundacja Przeszłość Jutra</strong>
+              <p><a href="mailto:fundacja@przeszloscjutra.pl">fundacja@przeszloscjutra.pl</a></p>
+              <p>ul. 28 Czerwca 1956 r. 251/14, 61-485 Poznań</p>
+            </div>
+          </div>
+
+          <form class="styled-form" id="coopForm" novalidate>
+            <div class="form-group">
+              <label for="coopName">Imię i nazwisko *</label>
+              <input type="text" id="coopName" name="name" placeholder="Jak się nazywasz?" required />
+            </div>
+            <div class="form-group">
+              <label for="coopOrg">Instytucja lub organizacja (opcjonalnie)</label>
+              <input type="text" id="coopOrg" name="organization" placeholder="Nazwa instytucji, firmy lub organizacji" />
+            </div>
+            <div class="form-group">
+              <label for="coopEmail">Adres e-mail *</label>
+              <input type="email" id="coopEmail" name="email" placeholder="adres@przyklad.pl" required />
+            </div>
+            <div class="form-group">
+              <label for="coopTopic">Temat współpracy *</label>
+              <select id="coopTopic" name="topic" required>
+                <option value="">Wybierz temat</option>
+                <option value="wspólny projekt">wspólny projekt</option>
+                <option value="partnerstwo instytucjonalne">partnerstwo instytucjonalne</option>
+                <option value="wsparcie finansowe lub rzeczowe">wsparcie finansowe lub rzeczowe</option>
+                <option value="współpraca naukowa lub wydawnicza">współpraca naukowa lub wydawnicza</option>
+                <option value="organizacja wydarzenia">organizacja wydarzenia</option>
+                <option value="inny temat">inny temat</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="coopMessage">Wiadomość *</label>
+              <textarea id="coopMessage" name="message" rows="4" placeholder="Opowiedz krótko o swoim pomyśle..." required></textarea>
+            </div>
+            <div class="form-check">
+              <input type="checkbox" id="coopConsent" name="consent" required />
+              <label for="coopConsent">
+                Zapoznałem/am się z <a href="polityka-prywatnosci.html">polityką prywatności</a> i wyrażam zgodę na przetwarzanie danych osobowych w celu odpowiedzi na zapytanie. *
+              </label>
+            </div>
+            <button type="submit" class="btn btn-burgundy btn-full">Wyślij zapytanie</button>
+            <p class="form-status" id="coopFormStatus" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Końcowe wezwanie do działania -->
+    <section class="cta-banner cta-dark">
+      <div class="container cta-split-row">
+        <div>
+          <h2>Wspólnie możemy zachować więcej</h2>
+          <p>Zapraszamy do współtworzenia inicjatyw, które pozwalają chronić dziedzictwo, rozwijać wiedzę i przywracać pamięć o przeszłości.</p>
+        </div>
+        <a href="#formularz-wspolpracy" class="btn btn-burgundy">Skontaktuj się z nami →</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand brand-light">
+            <span class="brand-monogram" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <path d="M5 20h14M7 20V8l5-4 5 4v12M10 12h4M12 12v8"/>
+              </svg>
+            </span>
+            <span class="brand-text">
+              <span class="brand-title">FUNDACJA PRZESZŁOŚĆ JUTRA</span>
+              <span class="brand-subtitle">ZACHOWAĆ · ROZUMIEĆ · UCZESTNICZYĆ</span>
+            </span>
+          </a>
+          <p class="footer-desc">
+            Zachowujemy pamięć, chronimy dziedzictwo i upowszechniamy wiedzę o przeszłości.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>NAWIGACJA</h4>
+          <ul>
+            <li><a href="o-fundacji.html">O fundacji</a></li>
+            <li><a href="projekty.html">Projekty</a></li>
+            <li><a href="aktualnosci.html">Aktualności</a></li>
+            <li><a href="wspolpraca.html">Współpraca</a></li>
+            <li><a href="wesprzyj-nas.html">Wesprzyj nas</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>KONTAKT I DANE REJESTROWE</h4>
+          <ul class="footer-contact-list">
+            <li><a href="mailto:fundacja@przeszloscjutra.pl">fundacja@przeszloscjutra.pl</a></li>
+            <li>ul. 28 Czerwca 1956 r. 251/14, 61-485 Poznań</li>
+            <li class="footer-ids">KRS: 0001264834 · NIP: 7831962314 · REGON: 545646467</li>
+          </ul>
+          <h4 class="footer-subhead">MEDIA SPOŁECZNOŚCIOWE</h4>
+          <div class="social-links">
+            <a href="https://www.instagram.com/igorczapczyk?srtk=MXB1MWFxejh5ZDUybQ==" target="_blank" rel="noopener noreferrer" aria-label="Instagram Fundacji">Instagram ↗</a>
+            <a href="https://www.facebook.com/profile.php?id=100014543077034" target="_blank" rel="noopener noreferrer" aria-label="Facebook Fundacji">Facebook ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <a href="polityka-prywatnosci.html">Polityka prywatności</a>
+        <span>© <span id="year">2026</span> Fundacja Przeszłość Jutra. Wszelkie prawa zastrzeżone.</span>
+      </div>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>

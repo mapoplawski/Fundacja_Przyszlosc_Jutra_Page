@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aktualności — Fundacja Przeszłość Jutra</title>
+  <meta name="description" content="Najnowsze wydarzenia, publikacje i inicjatywy Fundacji Przeszłość Jutra." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header" id="top">
+    <div class="container nav-wrapper">
+      <a href="index.html" class="brand" aria-label="Fundacja Przeszłość Jutra — Strona główna">
+        <span class="brand-monogram" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path d="M5 20h14M7 20V8l5-4 5 4v12M10 12h4M12 12v8"/>
+          </svg>
+        </span>
+        <span class="brand-text">
+          <span class="brand-title">PRZESZŁOŚĆ JUTRA</span>
+          <span class="brand-subtitle">FUNDACJA</span>
+        </span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Otwórz menu nawigacji" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav" id="mainNav" aria-label="Główna nawigacja">
+        <ul>
+          <li><a href="o-fundacji.html">O fundacji</a></li>
+          <li><a href="projekty.html">Projekty</a></li>
+          <li><a href="aktualnosci.html" class="active">Aktualności</a></li>
+          <li><a href="wspolpraca.html">Współpraca</a></li>
+          <li><a href="wesprzyj-nas.html" class="nav-highlight">Wesprzyj nas</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1. Nagłówek -->
+    <section class="page-hero-dark">
+      <div class="container">
+        <p class="eyebrow eyebrow-light">Z ŻYCIA FUNDACJI</p>
+        <h1>Aktualności</h1>
+        <p class="hero-lead">
+          Poznaj nasze działania, wydarzenia i inicjatywy na rzecz ochrony dziedzictwa historycznego i kulturowego.
+        </p>
+      </div>
+    </section>
+
+    <!-- 2. Wyróżniona aktualność -->
+    <section class="section section-cream" id="art-powazki">
+      <div class="container">
+        <article class="featured-news-card">
+          <div class="featured-news-visual visual-memorial-wide">
+            <div class="gravestone-illustration" aria-hidden="true">
+              <div class="stone"><span>JAN NOWICKI<br>„RYŚ”<br>1918 – 1944</span></div>
+              <div class="stone"><span>HALINKA<br>1920 – 1944</span></div>
+            </div>
+          </div>
+          <div class="featured-news-body">
+            <div class="news-meta">
+              <span class="pill pill-solid">WYDARZENIA</span>
+              <time datetime="2026-09-25">25 września 2026</time>
+            </div>
+            <h2>Upamiętniliśmy por. Jana Nowickiego „Rysia” i łączniczkę „Halinkę”</h2>
+            <p>
+              25 września 2026 roku na Powązkach Wojskowych odbyła się uroczystość upamiętniająca żołnierza Armii Krajowej Jana Nowickiego „Rysia” oraz łączniczkę „Halinkę”. Inicjatywa Fundacji Przeszłość Jutra i Muzeum Powstania Warszawskiego przywraca pamięć o uczestnikach Powstania Warszawskiego, których miejsca pochówku pozostają nieznane.
+            </p>
+            <button type="button" class="btn btn-burgundy" data-article-modal="powazki">Czytaj więcej →</button>
+          </div>
+        </article>
+
+        <!-- 3. Pasek kategorii i wyszukiwarka -->
+        <div class="news-controls">
+          <div class="filter-bar" role="group" aria-label="Filtr kategorii aktualności">
+            <button type="button" class="filter-btn active" data-news-filter="all">Wszystkie</button>
+            <button type="button" class="filter-btn" data-news-filter="Wydarzenia">Wydarzenia</button>
+            <button type="button" class="filter-btn" data-news-filter="Projekty">Projekty</button>
+            <button type="button" class="filter-btn" data-news-filter="Publikacje">Publikacje</button>
+            <button type="button" class="filter-btn" data-news-filter="Historia i badania">Historia i badania</button>
+            <button type="button" class="filter-btn" data-news-filter="Współpraca">Współpraca</button>
+            <button type="button" class="filter-btn" data-news-filter="Z życia fundacji">Z życia fundacji</button>
+          </div>
+          <div class="search-box">
+            <label for="newsSearch" class="sr-only">Szukaj aktualności</label>
+            <input type="search" id="newsSearch" placeholder="Szukaj aktualności..." />
+          </div>
+        </div>
+
+        <!-- Siatka aktualności -->
+        <div class="grid-3" id="newsGrid">
+          <article class="news-grid-card" id="art-historia" data-category="Historia i badania">
+            <div class="news-thumb thumb-book"><span>DZIEJE ŻOŁNIERZY ARMII KRAJOWEJ</span></div>
+            <div class="news-grid-body">
+              <div class="news-meta">
+                <span class="pill pill-solid">HISTORIA I BADANIA</span>
+                <time datetime="2026-05-12">12 maja 2026</time>
+              </div>
+              <h3>Historia Jana Nowickiego „Rysia” ponownie odkryta</h3>
+              <p>
+                Informacja o ustaleniu tożsamości żołnierza Armii Krajowej po ponad osiemdziesięciu latach oraz o badaniach historycznych, które doprowadziły do rozwiązania zagadki.
+              </p>
+              <button type="button" class="text-link btn-as-link" data-article-modal="historia">Czytaj więcej →</button>
+            </div>
+          </article>
+
+          <article class="news-grid-card" id="art-enigma" data-category="Wydarzenia">
+            <div class="news-thumb thumb-enigma"><span>CENTRUM SZYFRÓW ENIGMA · POZNAŃ</span></div>
+            <div class="news-grid-body">
+              <div class="news-meta">
+                <span class="pill pill-solid">WYDARZENIA</span>
+                <time datetime="2026-09-17">17 września 2026</time>
+              </div>
+              <h3>Spotkanie poświęcone „Rysiowi” w Centrum Szyfrów Enigma</h3>
+              <p>
+                Relacja ze spotkania w Poznaniu poświęconego Janowi Nowickiemu „Rysiowi” i jego związkom z przedwojennym Lechem Poznań oraz środowiskiem Dębca.
+              </p>
+              <button type="button" class="text-link btn-as-link" data-article-modal="enigma">Czytaj więcej →</button>
+            </div>
+          </article>
+
+          <article class="news-grid-card" id="art-ksiazka" data-category="Publikacje">
+            <div class="news-thumb thumb-pub"><span>TAJEMNICA „RYSIA” · ODDZIAŁ 993/W</span></div>
+            <div class="news-grid-body">
+              <div class="news-meta">
+                <span class="pill pill-solid">PUBLIKACJE</span>
+                <time datetime="2026-04-10">10 kwietnia 2026</time>
+              </div>
+              <h3>Książka Wojciecha Königsberga i prof. Remigiusza Wiśniewskiego i kolejne plany wydawnicze</h3>
+              <p>
+                Informacja o publikacji Tajemnica „Rysia” z Oddziału 993/W, jej znaczeniu dla poznania losów żołnierza oraz planach dalszego upowszechniania wyników badań.
+              </p>
+              <button type="button" class="text-link btn-as-link" data-article-modal="ksiazka">Czytaj więcej →</button>
+            </div>
+          </article>
+
+          <article class="news-grid-card" id="art-inicjatywa" data-category="Projekty">
+            <div class="news-thumb thumb-memorial"><span>PAMIĘĆ I DZIEDZICTWO</span></div>
+            <div class="news-grid-body">
+              <div class="news-meta">
+                <span class="pill pill-solid">PROJEKTY</span>
+                <time datetime="2026-03-03">3 marca 2026</time>
+              </div>
+              <h3>Inicjatywa upamiętnienia nieznanych miejsc pochówku powstańców</h3>
+              <p>
+                Przedstawienie działań związanych z symbolicznym upamiętnieniem Jana Nowickiego „Rysia” i łączniczki „Halinki”.
+              </p>
+              <button type="button" class="text-link btn-as-link" data-article-modal="inicjatywa">Czytaj więcej →</button>
+            </div>
+          </article>
+
+          <article class="news-grid-card" id="art-wspolpraca" data-category="Współpraca">
+            <div class="news-thumb thumb-coop"><span>PARTNERSTWA INSTYTUCJONALNE</span></div>
+            <div class="news-grid-body">
+              <div class="news-meta">
+                <span class="pill pill-solid">WSPÓŁPRACA</span>
+                <time datetime="2026-02-18">18 lutego 2026</time>
+              </div>
+              <h3>Fundacja Przeszłość Jutra rozwija współpracę z instytucjami</h3>
+              <p>
+                Informacja o nawiązanych partnerstwach i wspólnych działaniach podejmowanych na rzecz ochrony dziedzictwa historycznego i kulturowego.
+              </p>
+              <button type="button" class="text-link btn-as-link" data-article-modal="wspolpraca">Czytaj więcej →</button>
+            </div>
+          </article>
+
+          <article class="news-grid-card" id="art-zycie" data-category="Z życia fundacji">
+            <div class="news-thumb thumb-life"><span>Z ŻYCIA FUNDACJI</span></div>
+            <div class="news-grid-body">
+              <div class="news-meta">
+                <span class="pill pill-solid">Z ŻYCIA FUNDACJI</span>
+                <time datetime="2026-02-05">5 lutego 2026</time>
+              </div>
+              <h3>Nad czym obecnie pracujemy?</h3>
+              <p>
+                Krótka informacja o aktualnie prowadzonych projektach, przygotowywanych wydarzeniach, planowanych publikacjach lub poszukiwaniu partnerów.
+              </p>
+              <button type="button" class="text-link btn-as-link" data-article-modal="zycie">Czytaj więcej →</button>
+            </div>
+          </article>
+        </div>
+
+        <p class="empty-state" id="newsEmptyState" hidden>
+          Nie znaleziono aktualności spełniających wybrane kryteria wyszukiwania.
+        </p>
+      </div>
+    </section>
+
+    <!-- 4. Sekcja współpracuj z nami -->
+    <section class="cta-banner cta-dark">
+      <div class="container cta-split-row">
+        <div>
+          <h2>Twórzmy kolejne inicjatywy</h2>
+          <p>
+            Masz pomysł na projekt historyczny, edukacyjny lub kulturalny? Chcesz wesprzeć nasze działania albo nawiązać współpracę z Fundacją Przeszłość Jutra? Zapraszamy do kontaktu.
+          </p>
+        </div>
+        <a href="wspolpraca.html" class="btn btn-outline-light">Współpracuj z nami →</a>
+      </div>
+    </section>
+
+    <!-- Modal pełnej treści aktualności -->
+    <div class="modal-backdrop" id="articleModal" hidden role="dialog" aria-modal="true" aria-labelledby="articleModalTitle">
+      <div class="modal-card">
+        <button type="button" class="modal-close" id="closeArticleModal" aria-label="Zamknij artykuł">✕</button>
+        <div class="news-meta">
+          <span class="pill pill-solid" id="articleModalCat"></span>
+          <span id="articleModalDate"></span>
+        </div>
+        <h2 id="articleModalTitle"></h2>
+        <div id="articleModalBody"></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark" id="backToAllNews">← Wszystkie aktualności</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand brand-light">
+            <span class="brand-monogram" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <path d="M5 20h14M7 20V8l5-4 5 4v12M10 12h4M12 12v8"/>
+              </svg>
+            </span>
+            <span class="brand-text">
+              <span class="brand-title">FUNDACJA PRZESZŁOŚĆ JUTRA</span>
+              <span class="brand-subtitle">ZACHOWAĆ · ROZUMIEĆ · UCZESTNICZYĆ</span>
+            </span>
+          </a>
+          <p class="footer-desc">
+            Zachowujemy pamięć, chronimy dziedzictwo i upowszechniamy wiedzę o przeszłości.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>NAWIGACJA</h4>
+          <ul>
+            <li><a href="o-fundacji.html">O fundacji</a></li>
+            <li><a href="projekty.html">Projekty</a></li>
+            <li><a href="aktualnosci.html">Aktualności</a></li>
+            <li><a href="wspolpraca.html">Współpraca</a></li>
+            <li><a href="wesprzyj-nas.html">Wesprzyj nas</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>KONTAKT I DANE REJESTROWE</h4>
+          <ul class="footer-contact-list">
+            <li><a href="mailto:fundacja@przeszloscjutra.pl">fundacja@przeszloscjutra.pl</a></li>
+            <li>ul. 28 Czerwca 1956 r. 251/14, 61-485 Poznań</li>
+            <li class="footer-ids">KRS: 0001264834 · NIP: 7831962314 · REGON: 545646467</li>
+          </ul>
+          <h4 class="footer-subhead">MEDIA SPOŁECZNOŚCIOWE</h4>
+          <div class="social-links">
+            <a href="https://www.instagram.com/igorczapczyk?srtk=MXB1MWFxejh5ZDUybQ==" target="_blank" rel="noopener noreferrer" aria-label="Instagram Fundacji">Instagram ↗</a>
+            <a href="https://www.facebook.com/profile.php?id=100014543077034" target="_blank" rel="noopener noreferrer" aria-label="Facebook Fundacji">Facebook ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <a href="polityka-prywatnosci.html">Polityka prywatności</a>
+        <span>© <span id="year">2026</span> Fundacja Przeszłość Jutra. Wszelkie prawa zastrzeżone.</span>
+      </div>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>
