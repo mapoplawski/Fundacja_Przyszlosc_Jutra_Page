@@ -1,0 +1,47 @@
+MAPOWANIE ZDJĘĆ — Fundacja Przeszłość Jutra
+============================================================
+
+media/img/hero/strona-glowna-poster.webp  <--  hero-tlo.mp4 (klatka 00:00)
+media/img/hero/o-fundacji-hero.webp  <--  Kopia _DSC2760 (1)_wynik.webp
+media/img/hero/projekty-hero.webp  <--  Kopia DSC_2513-5_wynik.webp
+media/img/hero/aktualnosci-hero.webp  <--  Kopia DSC_4883-107_wynik.webp
+media/img/hero/wspolpraca-hero.webp  <--  Kopia DSC_7893-5 (1)_wynik.webp
+media/img/hero/wesprzyj-nas-hero.webp  <--  Kopia DSC_6323_wynik.webp
+media/img/hero/kontakt-hero.webp  <--  Kopia DSC_0272-42_wynik.webp
+media/img/o-fundacji/dzialalnosc-fundacji.webp  <--  Kopia _DSC2887 (1)_wynik.webp
+media/img/o-fundacji/igor-czapczyk-portret.webp  <--  Kopia DSC_4777-101_wynik.webp
+media/img/projekty/tajemnica-rysia-okladka.webp  <--  Kopia DSC_8387-28_wynik.webp
+media/img/projekty/tajemnica-rysia-wyrozniony.webp  <--  Jan Nowicki - Du╛e (1)_wynik.webp
+media/img/projekty/powstanie-warszawskie-szlak.webp  <--  Kopia DSC_3355-22_wynik.webp
+media/img/projekty/symboliczne-groby-powazki.webp  <--  Kopia DSC_4921-109_wynik.webp
+media/img/projekty/galeria/rys-galeria-01.webp  <--  Kopia DSC_7893-5 (1)_wynik.webp
+media/img/projekty/galeria/rys-galeria-02.webp  <--  Kopia DSC_6257_wynik.webp
+media/img/projekty/galeria/powstanie-galeria-01.webp  <--  Kopia DSC_9331-16_wynik.webp
+media/img/projekty/galeria/powstanie-galeria-02.webp  <--  Kopia DSC_3165-16_wynik.webp
+media/img/projekty/galeria/groby-galeria-01.webp  <--  Kopia DSC_4883-107_wynik.webp
+media/img/projekty/galeria/groby-galeria-02.webp  <--  Kopia DSC_0443-47_wynik.webp
+media/img/aktualnosci/upamietnienie-rysia-i-halinki.webp  <--  Kopia DSC_4921-109_wynik.webp
+media/img/aktualnosci/spotkanie-centrum-szyfrow-enigma.webp  <--  Kopia 300A0001_wynik.webp
+media/img/aktualnosci/historia-rysia-odkryta.webp  <--  Kopia _DSC2746 (1)_wynik.webp
+media/img/aktualnosci/ksiazka-tajemnica-rysia.webp  <--  Kopia DSC_8387-28_wynik.webp
+media/img/aktualnosci/inicjatywa-upamietnienia-powstancow.webp  <--  Kopia DSC_0443-47_wynik.webp
+media/img/aktualnosci/wspolpraca-z-instytucjami.webp  <--  Kopia DSC_6669_wynik.webp
+media/img/aktualnosci/nad-czym-obecnie-pracujemy.webp  <--  Kopia DSC_9459-18_wynik.webp
+media/img/aktualnosci/galeria/powazki-01.webp  <--  Kopia DSC_5702-153_wynik.webp
+media/img/aktualnosci/galeria/powazki-02.webp  <--  Kopia DSC_5206-124_wynik.webp
+media/img/aktualnosci/galeria/powazki-03.webp  <--  Kopia DSC_3363-23_wynik.webp
+media/img/aktualnosci/galeria/powazki-04.webp  <--  Kopia DSC_4921-109_wynik.webp
+media/img/wspolpraca/wspolne-dzialania.webp  <--  Kopia DSC_6669_wynik.webp
+media/img/wspolpraca/wspolpraca-cta-tlo.webp  <--  Kopia DSC_0155-38_wynik.webp
+media/img/wesprzyj/dzialalnosc-dlugofalowa.webp  <--  Kopia DSC_8019-8_wynik.webp
+media/img/wesprzyj/nie-tylko-pieniadze.webp  <--  Kopia DSC_8407-29_wynik.webp
+media/img/wesprzyj/wesprzyj-cta-tlo.webp  <--  Kopia DSC_3323-20_wynik.webp
+media/img/kontakt/archiwum-rozmowa.webp  <--  Kopia _DSC2746 (1)_wynik.webp
+media/img/dodatkowe/spotkanie-mikrofon.webp  <--  Kopia DSC_8124-13 (1)_wynik.webp
+media/img/dodatkowe/krakowskie-przedmiescie-szlak.webp  <--  Kopia DSC_9709-26_wynik.webp
+media/img/dodatkowe/spacer-stare-miasto.webp  <--  Kopia DSC_9067-6_wynik.webp
+media/img/dodatkowe/msza-harcerze-sztandary.webp  <--  Kopia DSC_2285-1_wynik.webp
+media/img/dodatkowe/spacer-powazki-grupa.webp  <--  Kopia DSC_0003-35_wynik.webp
+
+Uwaga: Pliki logo (media/img/logo/*) oraz logotypy partnerów (media/img/wspolpraca/partnerzy/*)
+celowo NIE znajdują się w tej paczce, aby rozpakowanie jej w repozytorium nie nadpisało istniejących miejsc na logo.
