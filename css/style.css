@@ -467,8 +467,12 @@ em {
   background-color: var(--fpj-white);
   border: 1px solid var(--fpj-border);
   border-radius: var(--fpj-radius);
-  height: 100%;
   transition: transform 0.35s var(--fpj-ease), box-shadow 0.35s var(--fpj-ease), border-color 0.35s var(--fpj-ease);
+}
+
+/* Równa wysokość tylko dla kart będących jedynym dzieckiem kolumny w siatce */
+.row:not(.align-items-start) > [class*="col-"] > .fpj-card:only-child {
+  height: 100%;
 }
 
 .fpj-card:hover {
@@ -890,5 +894,95 @@ em {
   .reveal {
     opacity: 1 !important;
     transform: none !important;
+  }
+}
+
+
+/* ---------- Bootstrap 5 Modal + Carousel Gallery Lightbox ---------- */
+.fpj-gallery-modal .modal-content {
+  background-color: rgba(20, 18, 15, 0.96);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--fpj-text-light);
+  border: 1px solid rgba(246, 243, 236, 0.14);
+}
+
+.fpj-gallery-modal .modal-header {
+  border-bottom: 1px solid rgba(246, 243, 236, 0.12);
+  padding: 0.9rem 1.5rem;
+}
+
+.fpj-gallery-counter {
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  color: var(--fpj-text-light-muted);
+}
+
+.fpj-gallery-slide-figure {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 62vh;
+  padding: 1rem 3.5rem 2.75rem;
+}
+
+.fpj-gallery-slide-figure img {
+  max-width: 100%;
+  max-height: 74vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--fpj-radius);
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.55);
+}
+
+.fpj-gallery-slide-caption {
+  margin-top: 1rem;
+  color: var(--fpj-text-light);
+  font-size: 0.94rem;
+  text-align: center;
+  max-width: 68ch;
+}
+
+.fpj-gallery-modal .carousel-control-prev,
+.fpj-gallery-modal .carousel-control-next {
+  width: 3.5rem;
+  opacity: 0.85;
+}
+
+.fpj-gallery-modal .carousel-control-prev:hover,
+.fpj-gallery-modal .carousel-control-next:hover {
+  opacity: 1;
+}
+
+.fpj-gallery-modal .carousel-control-prev-icon,
+.fpj-gallery-modal .carousel-control-next-icon {
+  background-color: rgba(109, 41, 50, 0.85);
+  border-radius: 50%;
+  width: 2.6rem;
+  height: 2.6rem;
+  background-size: 52% 52%;
+}
+
+.fpj-gallery-modal .carousel-indicators [data-bs-target] {
+  background-color: rgba(246, 243, 236, 0.55);
+  width: 26px;
+  height: 3px;
+}
+
+.fpj-gallery-modal .carousel-indicators .active {
+  background-color: var(--fpj-accent-warm);
+}
+
+@media (max-width: 768px) {
+  .fpj-gallery-slide-figure {
+    padding: 0.75rem 1rem 2.75rem;
+    min-height: 52vh;
+  }
+  .fpj-gallery-modal .carousel-control-prev,
+  .fpj-gallery-modal .carousel-control-next {
+    width: 2.6rem;
   }
 }

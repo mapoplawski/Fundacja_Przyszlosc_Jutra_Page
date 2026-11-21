@@ -80,8 +80,17 @@ document.addEventListener("DOMContentLoaded", () => {
   // 5. Płynne przejścia między podstronami (Page Transition Curtain)
   if (!prefersReducedMotion) {
     document.addEventListener("click", (e) => {
+      if (e.defaultPrevented) return;
       const link = e.target.closest("a[href]");
       if (!link) return;
+      if (
+        link.hasAttribute("data-lightbox-gallery") ||
+        link.hasAttribute("data-bs-toggle") ||
+        link.hasAttribute("download") ||
+        link.closest(".gallery, .fpj-gallery")
+      ) {
+        return;
+      }
       const href = link.getAttribute("href");
       if (
         !href ||
@@ -89,6 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
         href.startsWith("mailto:") ||
         href.startsWith("tel:") ||
         href.startsWith("http") ||
+        /\.(webp|jpe?g|png|gif|svg|avif|mp4|webm|pdf)(\?.*)?$/i.test(href) ||
         link.target === "_blank" ||
         e.metaKey ||
         e.ctrlKey ||
@@ -105,25 +115,51 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.addEventListener("pageshow", () => {
       document.body.classList.remove("is-leaving");
+      document.body.style.overflow = "";
     });
   }
 
-  // 6. Kontrola wideo w tle na stronie głównej (Pauza / Odtwórz)
+  // 6. Kontrola wideo w tle na stronie głównej (Dźwięk + Pauza / Odtwórz)
   const heroVideo = document.getElementById("heroBgVideo");
   const videoToggleBtn = document.getElementById("videoToggleBtn");
-  if (heroVideo && videoToggleBtn) {
+  const videoMuteBtn = document.getElementById("videoMuteBtn");
+
+  if (heroVideo) {
     heroVideo.addEventListener("error", () => {
-      videoToggleBtn.hidden = true;
+      if (videoToggleBtn) videoToggleBtn.hidden = true;
+      if (videoMuteBtn) videoMuteBtn.hidden = true;
     });
-    videoToggleBtn.addEventListener("click", () => {
-      if (heroVideo.paused) {
-        heroVideo.play().catch(() => {});
-        videoToggleBtn.textContent = "❚❚ Wstrzymaj tło";
-      } else {
-        heroVideo.pause();
-        videoToggleBtn.textContent = "▶ Odtwórz tło";
-      }
-    });
+
+    if (videoToggleBtn) {
+      videoToggleBtn.addEventListener("click", () => {
+        if (heroVideo.paused) {
+          heroVideo.play().catch(() => {});
+          videoToggleBtn.textContent = "❚❚ Wstrzymaj tło";
+        } else {
+          heroVideo.pause();
+          videoToggleBtn.textContent = "▶ Odtwórz tło";
+        }
+      });
+    }
+
+    if (videoMuteBtn) {
+      videoMuteBtn.addEventListener("click", () => {
+        const willUnmute = heroVideo.muted;
+        heroVideo.muted = !willUnmute;
+        if (willUnmute) {
+          heroVideo.volume = 1;
+          if (heroVideo.paused) {
+            heroVideo.play().catch(() => {});
+            if (videoToggleBtn) videoToggleBtn.textContent = "❚❚ Wstrzymaj tło";
+          }
+          videoMuteBtn.textContent = "🔊 Wycisz";
+          videoMuteBtn.setAttribute("aria-pressed", "true");
+        } else {
+          videoMuteBtn.textContent = "🔇 Włącz dźwięk";
+          videoMuteBtn.setAttribute("aria-pressed", "false");
+        }
+      });
+    }
   }
 
   // 7. Kopiowanie numeru rachunku bankowego (Wesprzyj nas)
@@ -150,69 +186,156 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 8. Interaktywny Lightbox Galerii Zdjęć (podstrony aktualności i projektów)
-  const galleryItems = Array.from(document.querySelectorAll("[data-lightbox-gallery]"));
-  if (galleryItems.length) {
-    const lb = document.createElement("div");
-    lb.className = "fpj-lightbox";
-    lb.setAttribute("role", "dialog");
-    lb.setAttribute("aria-modal", "true");
-    lb.setAttribute("aria-label", "Podgląd zdjęcia w galerii");
-    lb.innerHTML = `
-      <span class="fpj-lightbox-counter" id="lbCounter"></span>
-      <button type="button" class="fpj-lightbox-btn fpj-lightbox-close" id="lbClose" aria-label="Zamknij">✕</button>
-      <button type="button" class="fpj-lightbox-btn fpj-lightbox-prev" id="lbPrev" aria-label="Poprzednie zdjęcie">‹</button>
-      <figure class="fpj-lightbox-figure">
-        <img id="lbImg" src="" alt="" />
-        <figcaption class="fpj-lightbox-caption" id="lbCaption"></figcaption>
-      </figure>
-      <button type="button" class="fpj-lightbox-btn fpj-lightbox-next" id="lbNext" aria-label="Następne zdjęcie">›</button>
+  // 8. Galeria zdjęć oparta o komponenty Bootstrap 5 (Modal + Carousel)
+  // Obsługuje zarówno [data-lightbox-gallery], jak i galerie generowane przez Publii (.gallery a)
+  const gallerySelector =
+    '[data-lightbox-gallery], .gallery a[href$=".webp"], .gallery a[href$=".jpg"], .gallery a[href$=".jpeg"], .gallery a[href$=".png"]';
+  const allGalleryLinks = Array.from(document.querySelectorAll(gallerySelector));
+
+  if (allGalleryLinks.length) {
+    const modalEl = document.createElement("div");
+    modalEl.className = "modal fade fpj-gallery-modal";
+    modalEl.id = "fpjGalleryModal";
+    modalEl.tabIndex = -1;
+    modalEl.setAttribute("aria-labelledby", "fpjGalleryModalLabel");
+    modalEl.setAttribute("aria-hidden", "true");
+    modalEl.innerHTML = `
+      <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="fpj-gallery-counter" id="fpjGalleryModalLabel">1 / 1</span>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Zamknij galerię"></button>
+          </div>
+          <div class="modal-body p-0">
+            <div id="fpjGalleryCarousel" class="carousel slide" data-bs-ride="false" data-bs-touch="true">
+              <div class="carousel-indicators" id="fpjGalleryIndicators"></div>
+              <div class="carousel-inner" id="fpjGalleryInner"></div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#fpjGalleryCarousel" data-bs-slide="prev" id="fpjGalleryPrev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Poprzednie zdjęcie</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#fpjGalleryCarousel" data-bs-slide="next" id="fpjGalleryNext">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Następne zdjęcie</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     `;
-    document.body.appendChild(lb);
+    document.body.appendChild(modalEl);
 
-    const lbImg = lb.querySelector("#lbImg");
-    const lbCaption = lb.querySelector("#lbCaption");
-    const lbCounter = lb.querySelector("#lbCounter");
-    let currentIndex = 0;
+    const carouselEl = modalEl.querySelector("#fpjGalleryCarousel");
+    const innerEl = modalEl.querySelector("#fpjGalleryInner");
+    const indicatorsEl = modalEl.querySelector("#fpjGalleryIndicators");
+    const counterEl = modalEl.querySelector("#fpjGalleryModalLabel");
+    const prevBtn = modalEl.querySelector("#fpjGalleryPrev");
+    const nextBtn = modalEl.querySelector("#fpjGalleryNext");
 
-    function showSlide(index) {
-      currentIndex = (index + galleryItems.length) % galleryItems.length;
-      const item = galleryItems[currentIndex];
-      lbImg.src = item.getAttribute("href");
-      lbImg.alt = item.dataset.caption || "";
-      lbCaption.textContent = item.dataset.caption || "";
-      lbCounter.textContent = `${currentIndex + 1} / ${galleryItems.length}`;
+    let activeCarousel = null;
+    let activeTotal = 0;
+
+    function escapeHtml(str) {
+      return String(str || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
     }
 
-    function openLightbox(index) {
-      showSlide(index);
-      lb.classList.add("is-open");
-      document.body.style.overflow = "hidden";
+    function getGroupItems(clickedLink) {
+      const groupName = clickedLink.getAttribute("data-lightbox-gallery");
+      if (groupName) {
+        return Array.from(document.querySelectorAll(`[data-lightbox-gallery="${CSS.escape(groupName)}"]`));
+      }
+      const parentGallery = clickedLink.closest(".gallery");
+      if (parentGallery) {
+        return Array.from(parentGallery.querySelectorAll("a[href]"));
+      }
+      return [clickedLink];
     }
 
-    function closeLightbox() {
-      lb.classList.remove("is-open");
-      document.body.style.overflow = "";
+    function openBootstrapGallery(clickedLink) {
+      const items = getGroupItems(clickedLink);
+      const startIndex = Math.max(0, items.indexOf(clickedLink));
+      activeTotal = items.length;
+
+      if (activeCarousel) {
+        activeCarousel.dispose();
+        activeCarousel = null;
+      }
+
+      innerEl.innerHTML = items
+        .map((item, idx) => {
+          const src = item.getAttribute("href");
+          const imgInside = item.querySelector("img");
+          const caption = item.dataset.caption || (imgInside ? imgInside.getAttribute("alt") : "") || "";
+          return `
+            <div class="carousel-item ${idx === startIndex ? "active" : ""}">
+              <figure class="fpj-gallery-slide-figure">
+                <img src="${escapeHtml(src)}" alt="${escapeHtml(caption)}" />
+                ${caption ? `<figcaption class="fpj-gallery-slide-caption">${escapeHtml(caption)}</figcaption>` : ""}
+              </figure>
+            </div>
+          `;
+        })
+        .join("");
+
+      const multi = items.length > 1;
+      prevBtn.classList.toggle("d-none", !multi);
+      nextBtn.classList.toggle("d-none", !multi);
+      indicatorsEl.classList.toggle("d-none", !multi);
+
+      indicatorsEl.innerHTML = multi
+        ? items
+            .map(
+              (_, idx) => `
+            <button type="button" data-bs-target="#fpjGalleryCarousel" data-bs-slide-to="${idx}"
+              class="${idx === startIndex ? "active" : ""}"
+              aria-current="${idx === startIndex ? "true" : "false"}"
+              aria-label="Zdjęcie ${idx + 1}"></button>`
+            )
+            .join("")
+        : "";
+
+      counterEl.textContent = `${startIndex + 1} / ${items.length}`;
+
+      if (window.bootstrap && window.bootstrap.Modal && window.bootstrap.Carousel) {
+        activeCarousel = new window.bootstrap.Carousel(carouselEl, {
+          interval: false,
+          ride: false,
+          wrap: true,
+          touch: true,
+          keyboard: true
+        });
+        const bsModal = window.bootstrap.Modal.getOrCreateInstance(modalEl);
+        bsModal.show();
+      }
     }
 
-    galleryItems.forEach((item, idx) => {
-      item.addEventListener("click", (e) => {
-        e.preventDefault();
-        openLightbox(idx);
-      });
+    carouselEl.addEventListener("slide.bs.carousel", (ev) => {
+      if (typeof ev.to === "number" && activeTotal > 0) {
+        counterEl.textContent = `${ev.to + 1} / ${activeTotal}`;
+      }
     });
 
-    lb.querySelector("#lbClose").addEventListener("click", closeLightbox);
-    lb.querySelector("#lbPrev").addEventListener("click", () => showSlide(currentIndex - 1));
-    lb.querySelector("#lbNext").addEventListener("click", () => showSlide(currentIndex + 1));
-    lb.addEventListener("click", (e) => {
-      if (e.target === lb) closeLightbox();
-    });
     document.addEventListener("keydown", (e) => {
-      if (!lb.classList.contains("is-open")) return;
-      if (e.key === "Escape") closeLightbox();
-      if (e.key === "ArrowLeft") showSlide(currentIndex - 1);
-      if (e.key === "ArrowRight") showSlide(currentIndex + 1);
+      if (!modalEl.classList.contains("show") || !activeCarousel) return;
+      if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        activeCarousel.prev();
+      } else if (e.key === "ArrowRight") {
+        e.preventDefault();
+        activeCarousel.next();
+      }
+    });
+
+    allGalleryLinks.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        openBootstrapGallery(link);
+      });
     });
   }
 
