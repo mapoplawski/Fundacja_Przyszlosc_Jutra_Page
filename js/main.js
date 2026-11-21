@@ -1,39 +1,132 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // 1. Rok w stopce
+  // 1. Aktualny rok w stopce
   const yearEl = document.getElementById("year");
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
   }
 
-  // 2. Menu mobilne
-  const navToggle = document.getElementById("navToggle");
-  const mainNav = document.getElementById("mainNav");
-  if (navToggle && mainNav) {
-    navToggle.addEventListener("click", () => {
-      const isOpen = mainNav.classList.toggle("open");
-      navToggle.setAttribute("aria-expanded", String(isOpen));
+  // 2. Sticky/shrinking header + Scroll Progress Bar + Back to Top
+  const navbar = document.querySelector(".site-navbar");
+  const progressBar = document.getElementById("scrollProgress");
+  const backToTop = document.getElementById("backToTop");
+
+  function handleScroll() {
+    const scrollY = window.scrollY || window.pageYOffset;
+    if (navbar) {
+      navbar.classList.toggle("is-scrolled", scrollY > 32);
+    }
+    if (progressBar) {
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? Math.min(100, (scrollY / docHeight) * 100) : 0;
+      progressBar.style.width = `${progress}%`;
+    }
+    if (backToTop) {
+      backToTop.classList.toggle("is-visible", scrollY > 420);
+    }
+  }
+
+  window.addEventListener("scroll", handleScroll, { passive: true });
+  handleScroll();
+
+  if (backToTop) {
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
     });
   }
 
-  // 3. Rozwijany biogram założyciela (O fundacji)
-  const toggleFounderBtn = document.getElementById("toggleFounderBio");
-  const founderExt = document.getElementById("founderExtended");
-  if (toggleFounderBtn && founderExt) {
-    toggleFounderBtn.addEventListener("click", () => {
-      const hidden = founderExt.hasAttribute("hidden");
-      if (hidden) {
-        founderExt.removeAttribute("hidden");
-        toggleFounderBtn.setAttribute("aria-expanded", "true");
-        toggleFounderBtn.textContent = "Zwiń informacje o założycielu ↑";
+  // 3. Subtelna paralaksa tła w sekcjach Hero (inspirowana peryt.eu / estrada.poznan.pl)
+  const parallaxEls = document.querySelectorAll("[data-parallax]");
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (parallaxEls.length && !prefersReducedMotion) {
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const y = window.scrollY;
+          parallaxEls.forEach((el) => {
+            const speed = parseFloat(el.dataset.parallax) || 0.2;
+            const rect = el.parentElement.getBoundingClientRect();
+            if (rect.bottom > -100 && rect.top < window.innerHeight + 100) {
+              el.style.transform = `translate3d(0, ${y * speed}px, 0) scale(1.06)`;
+            }
+          });
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+
+  // 4. Scroll-Reveal (IntersectionObserver) z obsługą dynamicznie dodanych kart
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+  );
+
+  window.fpjObserveReveals = function (scope = document) {
+    scope.querySelectorAll(".reveal:not(.is-visible)").forEach((el) => {
+      revealObserver.observe(el);
+    });
+  };
+  window.fpjObserveReveals(document);
+
+  // 5. Płynne przejścia między podstronami (Page Transition Curtain)
+  if (!prefersReducedMotion) {
+    document.addEventListener("click", (e) => {
+      const link = e.target.closest("a[href]");
+      if (!link) return;
+      const href = link.getAttribute("href");
+      if (
+        !href ||
+        href.startsWith("#") ||
+        href.startsWith("mailto:") ||
+        href.startsWith("tel:") ||
+        href.startsWith("http") ||
+        link.target === "_blank" ||
+        e.metaKey ||
+        e.ctrlKey ||
+        e.shiftKey
+      ) {
+        return;
+      }
+      e.preventDefault();
+      document.body.classList.add("is-leaving");
+      setTimeout(() => {
+        window.location.href = href;
+      }, 240);
+    });
+
+    window.addEventListener("pageshow", () => {
+      document.body.classList.remove("is-leaving");
+    });
+  }
+
+  // 6. Kontrola wideo w tle na stronie głównej (Pauza / Odtwórz)
+  const heroVideo = document.getElementById("heroBgVideo");
+  const videoToggleBtn = document.getElementById("videoToggleBtn");
+  if (heroVideo && videoToggleBtn) {
+    heroVideo.addEventListener("error", () => {
+      videoToggleBtn.hidden = true;
+    });
+    videoToggleBtn.addEventListener("click", () => {
+      if (heroVideo.paused) {
+        heroVideo.play().catch(() => {});
+        videoToggleBtn.textContent = "❚❚ Wstrzymaj tło";
       } else {
-        founderExt.setAttribute("hidden", "");
-        toggleFounderBtn.setAttribute("aria-expanded", "false");
-        toggleFounderBtn.textContent = "Więcej informacji o założycielu ↓";
+        heroVideo.pause();
+        videoToggleBtn.textContent = "▶ Odtwórz tło";
       }
     });
   }
 
-  // 4. Kopiowanie numeru rachunku (Wesprzyj nas)
+  // 7. Kopiowanie numeru rachunku bankowego (Wesprzyj nas)
   const copyBtn = document.getElementById("copyAccountBtn");
   const accountEl = document.getElementById("bankAccountText");
   const copyFeedback = document.getElementById("copyFeedback");
@@ -50,239 +143,143 @@ document.addEventListener("DOMContentLoaded", () => {
         document.execCommand("copy");
         document.body.removeChild(tmp);
       }
-      copyFeedback.removeAttribute("hidden");
+      copyFeedback.classList.remove("d-none");
       setTimeout(() => {
-        copyFeedback.setAttribute("hidden", "");
-      }, 4000);
+        copyFeedback.classList.add("d-none");
+      }, 4200);
     });
   }
 
-  // 5. Filtrowanie i wyszukiwarka aktualności (Aktualności)
-  const filterBtns = document.querySelectorAll("[data-news-filter]");
-  const searchInput = document.getElementById("newsSearch");
-  const newsCards = document.querySelectorAll(".news-grid-card");
-  const emptyState = document.getElementById("newsEmptyState");
+  // 8. Interaktywny Lightbox Galerii Zdjęć (podstrony aktualności i projektów)
+  const galleryItems = Array.from(document.querySelectorAll("[data-lightbox-gallery]"));
+  if (galleryItems.length) {
+    const lb = document.createElement("div");
+    lb.className = "fpj-lightbox";
+    lb.setAttribute("role", "dialog");
+    lb.setAttribute("aria-modal", "true");
+    lb.setAttribute("aria-label", "Podgląd zdjęcia w galerii");
+    lb.innerHTML = `
+      <span class="fpj-lightbox-counter" id="lbCounter"></span>
+      <button type="button" class="fpj-lightbox-btn fpj-lightbox-close" id="lbClose" aria-label="Zamknij">✕</button>
+      <button type="button" class="fpj-lightbox-btn fpj-lightbox-prev" id="lbPrev" aria-label="Poprzednie zdjęcie">‹</button>
+      <figure class="fpj-lightbox-figure">
+        <img id="lbImg" src="" alt="" />
+        <figcaption class="fpj-lightbox-caption" id="lbCaption"></figcaption>
+      </figure>
+      <button type="button" class="fpj-lightbox-btn fpj-lightbox-next" id="lbNext" aria-label="Następne zdjęcie">›</button>
+    `;
+    document.body.appendChild(lb);
 
-  let activeCategory = "all";
+    const lbImg = lb.querySelector("#lbImg");
+    const lbCaption = lb.querySelector("#lbCaption");
+    const lbCounter = lb.querySelector("#lbCounter");
+    let currentIndex = 0;
 
-  function filterNews() {
-    if (!newsCards.length) return;
-    const query = searchInput ? searchInput.value.trim().toLowerCase() : "";
-    let visibleCount = 0;
-
-    newsCards.forEach((card) => {
-      const cat = card.dataset.category || "";
-      const text = card.textContent.toLowerCase();
-      const matchCat = activeCategory === "all" || cat === activeCategory;
-      const matchSearch = !query || text.includes(query);
-
-      if (matchCat && matchSearch) {
-        card.classList.remove("is-hidden");
-        visibleCount++;
-      } else {
-        card.classList.add("is-hidden");
-      }
-    });
-
-    if (emptyState) {
-      if (visibleCount === 0) {
-        emptyState.removeAttribute("hidden");
-      } else {
-        emptyState.setAttribute("hidden", "");
-      }
+    function showSlide(index) {
+      currentIndex = (index + galleryItems.length) % galleryItems.length;
+      const item = galleryItems[currentIndex];
+      lbImg.src = item.getAttribute("href");
+      lbImg.alt = item.dataset.caption || "";
+      lbCaption.textContent = item.dataset.caption || "";
+      lbCounter.textContent = `${currentIndex + 1} / ${galleryItems.length}`;
     }
-  }
 
-  filterBtns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      filterBtns.forEach((b) => b.classList.remove("active"));
-      btn.classList.add("active");
-      activeCategory = btn.dataset.newsFilter || "all";
-      filterNews();
-    });
-  });
-
-  if (searchInput) {
-    searchInput.addEventListener("input", filterNews);
-  }
-
-  // 6. Modale szczegółów projektów (Projekty)
-  const projectData = {
-    rys: {
-      cat: "01 / WSPARCIE TWÓRCÓW · PUBLIKACJE",
-      title: "Tajemnica „Rysia” z Oddziału 993/W",
-      body: `
-        <p>Publikacja autorstwa Wojciecha Königsberga i prof. Remigiusza Wiśniewskiego odsłania nieznane dotąd karty historii por. Jana Nowickiego „Rysia” — żołnierza oddziału bojowego kontrwywiadu Komendy Głównej Armii Krajowej 993/W.</p>
-        <p>Przez ponad osiem dekad jego prawdziwa tożsamość pozostawała ukryta w archiwalnych szyfrogramach. Projekt obejmuje wsparcie wydawnicze, premierę w Muzeum Powstania Warszawskiego oraz cykl spotkań autorskich i edukacyjnych w całej Polsce.</p>
-        <p><strong>Partnerzy inicjatywy:</strong> Muzeum Powstania Warszawskiego, środowisko badaczy historii AK, wydawcy i instytucje kultury.</p>
-      `
-    },
-    powstanie: {
-      cat: "02 / DOKUMENTACJA HISTORII",
-      title: "Śladami walk i pamięci — Powstanie Warszawskie",
-      body: `
-        <p>Projekt poświęcony dokumentowaniu szlaku bojowego powstańców warszawskich, archiwizacji relacji, fotografii oraz upowszechnianiu wiedzy historycznej wśród młodego pokolenia.</p>
-        <p>Fundacja uczestniczy w uroczystościach rocznicowych, przygotowuje materiały dokumentacyjne oraz wspiera inicjatywy edukacyjne przybliżające realia 1944 roku.</p>
-      `
-    },
-    groby: {
-      cat: "03 / UPAMIĘTNIENIE LUDZI I WYDARZEŃ",
-      title: "Symboliczne groby powstańców",
-      body: `
-        <p>Inicjatywa mająca na celu trwałe upamiętnienie żołnierzy Armii Krajowej i uczestników Powstania Warszawskiego, których miejsca spoczynku pozostają nieznane.</p>
-        <p>Dzięki współpracy Fundacji Przeszłość Jutra oraz Muzeum Powstania Warszawskiego 25 września 2026 roku na Cmentarzu Wojskowym na Powązkach upamiętniono por. Jana Nowickiego „Rysia” oraz łączniczkę „Halinkę”.</p>
-      `
+    function openLightbox(index) {
+      showSlide(index);
+      lb.classList.add("is-open");
+      document.body.style.overflow = "hidden";
     }
-  };
 
-  const projectModal = document.getElementById("projectModal");
-  const closeProjectModal = document.getElementById("closeProjectModal");
-  if (projectModal) {
-    document.querySelectorAll("[data-project-modal]").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const item = projectData[btn.dataset.projectModal];
-        if (!item) return;
-        document.getElementById("projectModalCat").textContent = item.cat;
-        document.getElementById("projectModalTitle").textContent = item.title;
-        document.getElementById("projectModalBody").innerHTML = item.body;
-        projectModal.removeAttribute("hidden");
+    function closeLightbox() {
+      lb.classList.remove("is-open");
+      document.body.style.overflow = "";
+    }
+
+    galleryItems.forEach((item, idx) => {
+      item.addEventListener("click", (e) => {
+        e.preventDefault();
+        openLightbox(idx);
       });
     });
 
-    if (closeProjectModal) {
-      closeProjectModal.addEventListener("click", () => projectModal.setAttribute("hidden", ""));
-    }
-    projectModal.addEventListener("click", (e) => {
-      if (e.target === projectModal) projectModal.setAttribute("hidden", "");
+    lb.querySelector("#lbClose").addEventListener("click", closeLightbox);
+    lb.querySelector("#lbPrev").addEventListener("click", () => showSlide(currentIndex - 1));
+    lb.querySelector("#lbNext").addEventListener("click", () => showSlide(currentIndex + 1));
+    lb.addEventListener("click", (e) => {
+      if (e.target === lb) closeLightbox();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (!lb.classList.contains("is-open")) return;
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") showSlide(currentIndex - 1);
+      if (e.key === "ArrowRight") showSlide(currentIndex + 1);
     });
   }
 
-  // 7. Modale pełnych artykułów (Aktualności)
-  const articleData = {
-    powazki: {
-      cat: "WYDARZENIA",
-      date: "25 września 2026",
-      title: "Upamiętniliśmy por. Jana Nowickiego „Rysia” i łączniczkę „Halinkę”",
-      body: `
-        <p>25 września 2026 roku na Powązkach Wojskowych w Warszawie odbyła się uroczystość upamiętniająca żołnierza Armii Krajowej por. Jana Nowickiego „Rysia” oraz łączniczkę „Halinkę”.</p>
-        <p>Inicjatywa Fundacji Przeszłość Jutra i Muzeum Powstania Warszawskiego przywraca pamięć o uczestnikach Powstania Warszawskiego, których miejsca pochówku pozostają nieznane. Symboliczne upamiętnienie stanowi wyraz hołdu dla ich odwagi i służby.</p>
-        <p>W wydarzeniu uczestniczyli przedstawiciele instytucji pamięci, badacze historii oraz osoby zaangażowane w odkrywanie losów żołnierzy Oddziału 993/W.</p>
-      `
-    },
-    historia: {
-      cat: "HISTORIA I BADANIA",
-      date: "12 maja 2026",
-      title: "Historia Jana Nowickiego „Rysia” ponownie odkryta",
-      body: `
-        <p>Wieloletnie kwerendy archiwalne oraz analiza dokumentów kontrwywiadu Armii Krajowej pozwoliły po ponad osiemdziesięciu latach ustalić pełną tożsamość por. Jana Nowickiego „Rysia”.</p>
-        <p>Odkrycie to otworzyło drogę do rekonstrukcji jego przedwojennych losów, działalności konspiracyjnej oraz udziału w Powstaniu Warszawskim.</p>
-      `
-    },
-    enigma: {
-      cat: "WYDARZENIA",
-      date: "17 września 2026",
-      title: "Spotkanie poświęcone „Rysiowi” w Centrum Szyfrów Enigma",
-      body: `
-        <p>W poznańskim Centrum Szyfrów Enigma odbyło się spotkanie otwarte poświęcone Janowi Nowickiemu „Rysiowi” — jego związkom z Poznaniem, środowiskiem Dębca oraz przedwojennym Lechem Poznań.</p>
-        <p>Uczestnicy spotkania poznali kulisy pracy badawczej nad odszyfrowaniem jego konspiracyjnej biografii.</p>
-      `
-    },
-    ksiazka: {
-      cat: "PUBLIKACJE",
-      date: "10 kwietnia 2026",
-      title: "Książka Wojciecha Königsberga i prof. Remigiusza Wiśniewskiego i kolejne plany wydawnicze",
-      body: `
-        <p>Publikacja „Tajemnica «Rysia» z Oddziału 993/W” spotkała się z dużym zainteresowaniem czytelników i historyków. Książka dokumentuje nie tylko losy pojedynczego żołnierza, lecz także realia funkcjonowania kontrwywiadu AK.</p>
-        <p>Fundacja Przeszłość Jutra planuje kolejne działania wydawnicze oraz spotkania autorskie popularyzujące rzetelne badania historyczne.</p>
-      `
-    },
-    inicjatywa: {
-      cat: "PROJEKTY",
-      date: "3 marca 2026",
-      title: "Inicjatywa upamiętnienia nieznanych miejsc pochówku powstańców",
-      body: `
-        <p>Rozpoczęliśmy prace organizacyjne i merytoryczne nad projektem symbolicznego upamiętnienia powstańców warszawskich, których mogiły nie zachowały się do naszych czasów.</p>
-      `
-    },
-    wspolpraca: {
-      cat: "WSPÓŁPRACA",
-      date: "18 lutego 2026",
-      title: "Fundacja Przeszłość Jutra rozwija współpracę z instytucjami",
-      body: `
-        <p>Budujemy partnerstwa z muzeami, archiwami oraz instytucjami kultury, aby wspólnie realizować projekty dokumentacyjne, edukacyjne i wydawnicze.</p>
-      `
-    },
-    zycie: {
-      cat: "Z ŻYCIA FUNDACJI",
-      date: "5 lutego 2026",
-      title: "Nad czym obecnie pracujemy?",
-      body: `
-        <p>Przygotowujemy kolejne wydarzenia rocznicowe, spotkania autorskie oraz nowe projekty dokumentacyjne. Zapraszamy badaczy, instytucje i darczyńców do wspólnego działania.</p>
-      `
-    }
-  };
+  // 9. FormSubmit.co (AJAX z walidacją Bootstrap 5 i fallbackiem)
+  document.querySelectorAll(".js-formsubmit").forEach((form) => {
+    const statusBox = form.querySelector(".js-form-status");
+    const submitBtn = form.querySelector('button[type="submit"]');
 
-  const articleModal = document.getElementById("articleModal");
-  const closeArticleModal = document.getElementById("closeArticleModal");
-  const backToAllNews = document.getElementById("backToAllNews");
-  if (articleModal) {
-    document.querySelectorAll("[data-article-modal]").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const item = articleData[btn.dataset.articleModal];
-        if (!item) return;
-        document.getElementById("articleModalCat").textContent = item.cat;
-        document.getElementById("articleModalDate").textContent = item.date;
-        document.getElementById("articleModalTitle").textContent = item.title;
-        document.getElementById("articleModalBody").innerHTML = item.body;
-        articleModal.removeAttribute("hidden");
-      });
-    });
-
-    const hideArticle = () => articleModal.setAttribute("hidden", "");
-    if (closeArticleModal) closeArticleModal.addEventListener("click", hideArticle);
-    if (backToAllNews) backToAllNews.addEventListener("click", hideArticle);
-    articleModal.addEventListener("click", (e) => {
-      if (e.target === articleModal) hideArticle();
-    });
-  }
-
-  // 8. Obsługa formularzy (Kontakt i Współpraca)
-  function setupForm(formId, statusId, subjectPrefix) {
-    const form = document.getElementById(formId);
-    const status = document.getElementById(statusId);
-    if (!form || !status) return;
-
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
+      form.classList.add("was-validated");
+
       if (!form.checkValidity()) {
-        status.textContent = "Proszę uzupełnić wszystkie wymagane pola oraz zaakceptować zgodę.";
-        form.reportValidity();
+        if (statusBox) {
+          statusBox.className = "js-form-status alert alert-warning mt-3 mb-0";
+          statusBox.textContent = "Proszę uzupełnić wszystkie wymagane pola i zaakceptować zgodę.";
+        }
         return;
       }
-      const name = form.querySelector("[name='name']").value.trim();
-      const email = form.querySelector("[name='email']").value.trim();
-      const topic = form.querySelector("[name='topic']").value;
-      const message = form.querySelector("[name='message']").value.trim();
 
-      status.textContent = `Dziękujemy, ${name}! Twoje zgłoszenie (${topic}) zostało przyjęte. Możesz również wysłać je bezpośrednio na adres fundacja@przeszloscjutra.pl.`;
+      const endpoint = form.getAttribute("action").replace("formsubmit.co/", "formsubmit.co/ajax/");
+      const formData = new FormData(form);
+      const payload = {};
+      formData.forEach((val, key) => {
+        payload[key] = val;
+      });
 
-      const mailSubject = encodeURIComponent(`${subjectPrefix}: ${topic} — ${name}`);
-      const mailBody = encodeURIComponent(`Imię i nazwisko: ${name}
-E-mail: ${email}
-Temat: ${topic}
+      const originalBtnText = submitBtn ? submitBtn.innerHTML : "";
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" aria-hidden="true"></span>Wysyłanie...';
+      }
 
-Wiadomość:
-${message}`);
-      const mailtoLink = document.createElement("a");
-      mailtoLink.href = `mailto:fundacja@przeszloscjutra.pl?subject=${mailSubject}&body=${mailBody}`;
-      mailtoLink.textContent = " Otwórz w programie pocztowym ↗";
-      mailtoLink.className = "text-link";
-      status.appendChild(mailtoLink);
+      try {
+        const res = await fetch(endpoint, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
 
-      form.reset();
+        if (res.ok && (data.success === "true" || data.success === true)) {
+          if (statusBox) {
+            statusBox.className = "js-form-status alert alert-success mt-3 mb-0";
+            statusBox.textContent = "Dziękujemy! Wiadomość została wysłana na adres fundacja@przeszloscjutra.pl. Odpowiemy najszybciej jak to możliwe.";
+          }
+          form.reset();
+          form.classList.remove("was-validated");
+        } else {
+          throw new Error(data.message || "FormSubmit wymaga jednorazowej aktywacji adresu e-mail.");
+        }
+      } catch (err) {
+        if (statusBox) {
+          statusBox.className = "js-form-status alert alert-info mt-3 mb-0";
+          statusBox.innerHTML =
+            'Nie udało się wysłać formularza w tle (np. podgląd lokalny <code>file://</code> lub nieaktywowany jeszcze adres w FormSubmit). ' +
+            'Po opublikowaniu na GitHub Pages wyślij pierwszą wiadomość testową, aby kliknąć link aktywacyjny wysłany przez <strong>FormSubmit.co</strong> na skrzynkę <code>fundacja@przeszloscjutra.pl</code>.';
+        }
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnText;
+        }
+      }
     });
-  }
-
-  setupForm("contactForm", "contactFormStatus", "Kontakt ze strony");
-  setupForm("coopForm", "coopFormStatus", "Propozycja współpracy");
+  });
 });

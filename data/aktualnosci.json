@@ -1,0 +1,86 @@
+[
+  {
+    "slug": "upamietnienie-rysia-i-halinki",
+    "url": "aktualnosci/upamietnienie-rysia-i-halinki.html",
+    "title": "Upamiętniliśmy por. Jana Nowickiego „Rysia” i łączniczkę „Halinkę”",
+    "date": "2026-09-25",
+    "dateLabel": "25 września 2026",
+    "category": "Wydarzenia",
+    "featured": true,
+    "image": "media/img/aktualnosci/upamietnienie-rysia-i-halinki.webp",
+    "imageAlt": "Uroczystość upamiętniająca por. Jana Nowickiego „Rysia” i łączniczkę „Halinkę” na Powązkach Wojskowych",
+    "excerpt": "25 września 2026 roku na Powązkach Wojskowych odbyła się uroczystość upamiętniająca żołnierza Armii Krajowej Jana Nowickiego „Rysia” oraz łączniczkę „Halinkę”. Inicjatywa Fundacji Przeszłość Jutra i Muzeum Powstania Warszawskiego przywraca pamięć o uczestnikach Powstania Warszawskiego, których miejsca pochówku pozostają nieznane."
+  },
+  {
+    "slug": "spotkanie-centrum-szyfrow-enigma",
+    "url": "aktualnosci/spotkanie-centrum-szyfrow-enigma.html",
+    "title": "Spotkanie poświęcone „Rysiowi” w Centrum Szyfrów Enigma",
+    "date": "2026-09-17",
+    "dateLabel": "17 września 2026",
+    "category": "Wydarzenia",
+    "featured": false,
+    "image": "media/img/aktualnosci/spotkanie-centrum-szyfrow-enigma.webp",
+    "imageAlt": "Spotkanie poświęcone Janowi Nowickiemu „Rysiowi” w Centrum Szyfrów Enigma w Poznaniu",
+    "excerpt": "Relacja ze spotkania w Poznaniu poświęconego Janowi Nowickiemu „Rysiowi” i jego związkom z przedwojennym Lechem Poznań oraz środowiskiem Dębca."
+  },
+  {
+    "slug": "historia-rysia-odkryta",
+    "url": "aktualnosci/historia-rysia-odkryta.html",
+    "title": "Historia Jana Nowickiego „Rysia” ponownie odkryta",
+    "date": "2026-05-12",
+    "dateLabel": "12 maja 2026",
+    "category": "Historia i badania",
+    "featured": false,
+    "image": "media/img/aktualnosci/historia-rysia-odkryta.webp",
+    "imageAlt": "Badania historyczne i dokumentacja losów Jana Nowickiego „Rysia”",
+    "excerpt": "Informacja o ustaleniu tożsamości żołnierza Armii Krajowej po ponad osiemdziesięciu latach oraz o badaniach historycznych, które doprowadziły do rozwiązania zagadki."
+  },
+  {
+    "slug": "ksiazka-tajemnica-rysia",
+    "url": "aktualnosci/ksiazka-tajemnica-rysia.html",
+    "title": "Książka Wojciecha Königsberga i prof. Remigiusza Wiśniewskiego i kolejne plany wydawnicze",
+    "date": "2026-04-10",
+    "dateLabel": "10 kwietnia 2026",
+    "category": "Publikacje",
+    "featured": false,
+    "image": "media/img/aktualnosci/ksiazka-tajemnica-rysia.webp",
+    "imageAlt": "Publikacja Tajemnica „Rysia” z Oddziału 993/W",
+    "excerpt": "Informacja o publikacji Tajemnica „Rysia” z Oddziału 993/W, jej znaczeniu dla poznania losów żołnierza oraz planach dalszego upowszechniania wyników badań."
+  },
+  {
+    "slug": "inicjatywa-upamietnienia-powstancow",
+    "url": "aktualnosci/inicjatywa-upamietnienia-powstancow.html",
+    "title": "Inicjatywa upamiętnienia nieznanych miejsc pochówku powstańców",
+    "date": "2026-03-03",
+    "dateLabel": "3 marca 2026",
+    "category": "Pamięć i dziedzictwo",
+    "featured": false,
+    "image": "media/img/aktualnosci/inicjatywa-upamietnienia-powstancow.webp",
+    "imageAlt": "Symboliczne groby powstańców warszawskich — pamięć i dziedzictwo",
+    "excerpt": "Przedstawienie działań związanych z symbolicznym upamiętnieniem Jana Nowickiego „Rysia” i łączniczki „Halinki”."
+  },
+  {
+    "slug": "wspolpraca-z-instytucjami",
+    "url": "aktualnosci/wspolpraca-z-instytucjami.html",
+    "title": "Fundacja Przeszłość Jutra rozwija współpracę z instytucjami",
+    "date": "2026-02-18",
+    "dateLabel": "18 lutego 2026",
+    "category": "Współpraca",
+    "featured": false,
+    "image": "media/img/aktualnosci/wspolpraca-z-instytucjami.webp",
+    "imageAlt": "Partnerstwa instytucjonalne Fundacji Przeszłość Jutra",
+    "excerpt": "Informacja o nawiązanych partnerstwach i wspólnych działaniach podejmowanych na rzecz ochrony dziedzictwa historycznego i kulturowego."
+  },
+  {
+    "slug": "nad-czym-obecnie-pracujemy",
+    "url": "aktualnosci/nad-czym-obecnie-pracujemy.html",
+    "title": "Nad czym obecnie pracujemy?",
+    "date": "2026-02-05",
+    "dateLabel": "5 lutego 2026",
+    "category": "Z życia fundacji",
+    "featured": false,
+    "image": "media/img/aktualnosci/nad-czym-obecnie-pracujemy.webp",
+    "imageAlt": "Bieżące prace i plany Fundacji Przeszłość Jutra",
+    "excerpt": "Krótka informacja o aktualnie prowadzonych projektach, przygotowywanych wydarzeniach, planowanych publikacjach lub poszukiwaniu partnerów."
+  }
+]

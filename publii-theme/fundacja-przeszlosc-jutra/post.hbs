@@ -1,0 +1,57 @@
+{{> head}}
+{{> header}}
+{{#post}}
+<section class="page-hero-light">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-9 reveal">
+        <a href="{{@website.url}}" class="fpj-link mb-4">← Powrót</a>
+        <div class="d-flex flex-wrap align-items-center gap-3 mb-3 small text-muted-fpj">
+          {{#if mainTag}}<a href="{{mainTag.url}}" class="pill-badge text-decoration-none">{{mainTag.name}}</a>{{/if}}
+          <time datetime="{{date createdAt 'YYYY-MM-DD'}}">{{date createdAt}}</time>
+        </div>
+        <h1 class="mb-3">{{title}}</h1>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="fpj-section bg-cream">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+        {{#featuredImage}}
+          {{#if url}}
+            <figure class="mb-5 reveal">
+              <div class="media-frame rounded overflow-hidden border" style="aspect-ratio: 16 / 9;">
+                <img src="{{url}}" alt="{{alt}}" />
+              </div>
+            </figure>
+          {{/if}}
+        {{/featuredImage}}
+
+        <article class="article-prose reveal">
+          {{{text}}}
+        </article>
+
+        {{#if ../relatedPosts}}
+          <div class="mt-5 pt-5 border-top">
+            <h2 class="h3 mb-4">Zobacz również</h2>
+            <div class="row g-4">
+              {{#each ../relatedPosts}}
+                <div class="col-md-6">
+                  <article class="fpj-card p-4">
+                    <h3 class="h5 mb-2"><a href="{{url}}" class="card-title-link">{{title}}</a></h3>
+                    <a href="{{url}}" class="fpj-link">Czytaj więcej <span class="arrow">→</span></a>
+                  </article>
+                </div>
+              {{/each}}
+            </div>
+          </div>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</section>
+{{/post}}
+{{> footer}}

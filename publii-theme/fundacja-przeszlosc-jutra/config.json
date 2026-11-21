@@ -1,0 +1,113 @@
+{
+  "name": "Fundacja Przeszłość Jutra",
+  "version": "2.0.0",
+  "author": "Fundacja Przeszłość Jutra",
+  "renderer": {
+    "createContentStructure": true,
+    "createSearchPage": false,
+    "create404Page": true
+  },
+  "supportedFeatures": {
+    "authorImages": true,
+    "blockEditor": true,
+    "customElements": true,
+    "pages": true,
+    "tagsList": true,
+    "responsiveImages": true
+  },
+  "files": {
+    "assetsPath": "assets",
+    "responsiveImages": {
+      "contentImages": {
+        "dimensions": {
+          "xs": {
+            "width": 480,
+            "height": "auto"
+          },
+          "md": {
+            "width": 960,
+            "height": "auto"
+          },
+          "xl": {
+            "width": 1600,
+            "height": "auto"
+          }
+        }
+      },
+      "featuredImages": {
+        "dimensions": {
+          "xs": {
+            "width": 480,
+            "height": 320,
+            "crop": true
+          },
+          "md": {
+            "width": 960,
+            "height": 640,
+            "crop": true
+          },
+          "xl": {
+            "width": 1600,
+            "height": 900,
+            "crop": true
+          }
+        }
+      }
+    }
+  },
+  "menus": {
+    "mainMenu": "Menu główne",
+    "footerMenu": "Menu w stopce"
+  },
+  "config": {
+    "postsPerPage": 9,
+    "tagsPostsPerPage": 9,
+    "authorsPostsPerPage": 9,
+    "excerptLength": 32,
+    "logo": ""
+  },
+  "customConfig": [
+    {
+      "name": "heroTitle",
+      "label": "Hasło przewodnie Hero",
+      "group": "Strona główna",
+      "value": "Przeszłość, która kształtuje przyszłość.",
+      "type": "text"
+    },
+    {
+      "name": "heroLead",
+      "label": "Podtytuł Hero",
+      "group": "Strona główna",
+      "value": "Chronimy dziedzictwo, dokumentujemy historię i przywracamy pamięć o ludziach i wydarzeniach.",
+      "type": "textarea"
+    },
+    {
+      "name": "heroVideoUrl",
+      "label": "Ścieżka wideo MP4 w tle Hero",
+      "group": "Strona główna",
+      "value": "media/video/hero-tlo.mp4",
+      "type": "text"
+    },
+    {
+      "name": "heroPosterUrl",
+      "label": "Ścieżka plakatu WebP dla Hero",
+      "group": "Strona główna",
+      "value": "media/img/hero/strona-glowna-poster.webp",
+      "type": "text"
+    },
+    {
+      "name": "emailFundacji",
+      "label": "E-mail Fundacji (FormSubmit)",
+      "group": "Dane Fundacji",
+      "value": "fundacja@przeszloscjutra.pl",
+      "type": "text"
+    },
+    {
+      "name": "ibanFundacji",
+      "label": "Numer rachunku bankowego (Wesprzyj nas)",
+      "group": "Dane Fundacji",
+      "value": "[NUMER RACHUNKU BANKOWEGO]",
+      "type": "text"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{{> head}}
+{{> header}}
+<section class="hero-home">
+  <div class="hero-video-wrap" aria-hidden="true">
+    <video id="heroBgVideo" autoplay muted loop playsinline preload="metadata" poster="{{@config.custom.heroPosterUrl}}" data-parallax="0.16">
+      <source src="{{@config.custom.heroVideoUrl}}" type="video/mp4" />
+    </video>
+  </div>
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="container hero-content-z">
+    <p class="eyebrow eyebrow-light reveal">PAMIĘĆ · DZIEDZICTWO · PRZYSZŁOŚĆ</p>
+    <h1 class="mb-4 reveal reveal-delay-1">{{@config.custom.heroTitle}}</h1>
+    <p class="hero-lead mb-4 reveal reveal-delay-2">{{@config.custom.heroLead}}</p>
+  </div>
+</section>
+
+<section class="fpj-section bg-cream">
+  <div class="container">
+    <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-5 reveal">
+      <div>
+        <p class="eyebrow">AKTUALNOŚCI</p>
+        <h2 class="mb-0">Najnowsze działania fundacji</h2>
+      </div>
+    </div>
+    <div class="row g-4">
+      {{#each posts}}
+        <div class="col-lg-4 col-md-6 reveal">
+          <article class="fpj-card d-flex flex-column overflow-hidden">
+            {{#featuredImage}}
+              {{#if url}}
+                <a href="{{../url}}" class="media-frame d-block" style="aspect-ratio: 16 / 10;">
+                  <img src="{{url}}" alt="{{alt}}" loading="lazy" />
+                </a>
+              {{/if}}
+            {{/featuredImage}}
+            <div class="p-4 d-flex flex-column flex-grow-1">
+              <div class="d-flex align-items-center gap-2 mb-3 small text-muted-fpj">
+                {{#if mainTag}}<span class="pill-badge">{{mainTag.name}}</span>{{/if}}
+                <time datetime="{{date createdAt 'YYYY-MM-DD'}}">{{date createdAt}}</time>
+              </div>
+              <h3 class="h4 mb-2"><a href="{{url}}" class="card-title-link">{{title}}</a></h3>
+              <p class="text-muted-fpj small flex-grow-1 mb-3">{{{excerpt}}}</p>
+              <a href="{{url}}" class="fpj-link align-self-start">Czytaj więcej <span class="arrow">→</span></a>
+            </div>
+          </article>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+</section>
+{{> footer}}

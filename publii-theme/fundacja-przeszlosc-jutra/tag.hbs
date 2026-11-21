@@ -1,0 +1,28 @@
+{{> head}}
+{{> header}}
+{{#tag}}
+<section class="page-hero-dark">
+  <div class="container hero-content-z">
+    <p class="eyebrow eyebrow-light">KATEGORIA</p>
+    <h1>{{name}}</h1>
+    {{#if description}}<p class="hero-lead">{{{description}}}</p>{{/if}}
+  </div>
+</section>
+{{/tag}}
+<section class="fpj-section bg-cream">
+  <div class="container">
+    <div class="row g-4">
+      {{#each posts}}
+        <div class="col-lg-4 col-md-6 reveal">
+          <article class="fpj-card p-4 d-flex flex-column">
+            <time class="small text-muted-fpj mb-2" datetime="{{date createdAt 'YYYY-MM-DD'}}">{{date createdAt}}</time>
+            <h3 class="h4 mb-2"><a href="{{url}}" class="card-title-link">{{title}}</a></h3>
+            <p class="small text-muted-fpj flex-grow-1">{{{excerpt}}}</p>
+            <a href="{{url}}" class="fpj-link align-self-start">Czytaj więcej <span class="arrow">→</span></a>
+          </article>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+</section>
+{{> footer}}

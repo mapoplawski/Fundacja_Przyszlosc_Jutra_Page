@@ -1,0 +1,46 @@
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row g-4 pb-5 border-bottom" style="border-color: var(--fpj-border-light) !important;">
+        <div class="col-lg-5">
+          <a href="{{@website.url}}" class="brand-wrap brand-light text-white mb-3">
+            <span class="brand-monogram" aria-hidden="true">P</span>
+            <span>
+              <span class="brand-title">FUNDACJA PRZESZŁOŚĆ JUTRA</span>
+              <span class="brand-subtitle">ZACHOWAĆ · ROZUMIEĆ · UCZESTNICZYĆ</span>
+            </span>
+          </a>
+          <p class="small mb-0" style="color: var(--fpj-text-light-muted); max-width: 38ch;">
+            Zachowujemy pamięć, chronimy dziedzictwo i upowszechniamy wiedzę o przeszłości.
+          </p>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h4>NAWIGACJA</h4>
+          <ul class="list-unstyled d-flex flex-column gap-2 small mb-0">
+            {{#if menus.footerMenu}}
+              {{#each menus.footerMenu.items}}
+                <li><a href="{{link}}">{{label}}</a></li>
+              {{/each}}
+            {{/if}}
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <h4>KONTAKT I DANE REJESTROWE</h4>
+          <ul class="list-unstyled d-flex flex-column gap-2 small mb-3">
+            <li><a href="mailto:{{@config.custom.emailFundacji}}">{{@config.custom.emailFundacji}}</a></li>
+            <li style="color: var(--fpj-text-light-muted);">ul. 28 Czerwca 1956 r. 251/14, 61-485 Poznań</li>
+            <li style="color: var(--fpj-text-light-muted);">KRS: 0001264834 · NIP: 7831962314 · REGON: 545646467</li>
+          </ul>
+        </div>
+      </div>
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 pt-4 small" style="color: var(--fpj-text-light-muted);">
+        <span>© <span id="year">2026</span> {{@website.name}}</span>
+      </div>
+    </div>
+  </footer>
+  <button type="button" class="back-to-top" id="backToTop" aria-label="Wróć na górę">↑</button>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="{{js "main.js"}}"></script>
+  {{{@footerCustomCode}}}
+</body>
+</html>

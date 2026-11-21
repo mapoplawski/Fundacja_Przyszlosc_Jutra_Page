@@ -1,0 +1,34 @@
+  <header class="sticky-top">
+    <nav class="navbar navbar-expand-lg site-navbar" aria-label="Główna nawigacja">
+      <div class="container">
+        <a class="brand-wrap navbar-brand me-auto" href="{{@website.url}}">
+          {{#if @website.logo}}
+            <img src="{{@website.logo}}" alt="{{@website.name}}" height="44" />
+          {{else}}
+            <span class="brand-monogram" aria-hidden="true">P</span>
+            <span>
+              <span class="brand-title">PRZESZŁOŚĆ JUTRA</span>
+              <span class="brand-subtitle">FUNDACJA</span>
+            </span>
+          {{/if}}
+        </a>
+        <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
+          <ul class="navbar-nav align-items-lg-center gap-lg-1 mt-3 mt-lg-0">
+            {{#if menus.mainMenu}}
+              {{#each menus.mainMenu.items}}
+                <li class="nav-item">
+                  <a class="nav-link {{#if isCurrent}}active{{/if}} {{cssClass}}" href="{{link}}">{{label}}</a>
+                </li>
+              {{/each}}
+            {{else}}
+              <li class="nav-item"><a class="nav-link" href="{{@website.url}}">Strona główna</a></li>
+            {{/if}}
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main>
